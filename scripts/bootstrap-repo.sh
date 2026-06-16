@@ -21,7 +21,7 @@ say() { printf '\033[1;36m▶ %s\033[0m\n' "$*"; }
 # --- 1. Files: copy templates into the target repo (never overwrite living docs) ---
 say "Copying templates into $TARGET"
 mkdir -p "$TARGET/.github" "$TARGET/docs"
-cp -R "$SKILL_DIR/templates/.github/." "$TARGET/.github/"
+cp -Rn "$SKILL_DIR/templates/.github/." "$TARGET/.github/"  # -n: never clobber local edits
 cp -n "$SKILL_DIR/commitlint.config.js" "$TARGET/commitlint.config.js" 2>/dev/null || true
 cp -n "$SKILL_DIR/CLAUDE.md" "$TARGET/CLAUDE.md" 2>/dev/null || true
 # Living docs + ADRs: copy only if absent so we don't clobber real content.
@@ -66,10 +66,19 @@ say "Applying main branch ruleset"
 if gh api "repos/$REPO/rulesets" --jq '.[].name' 2>/dev/null | grep -Fxq "main protection"; then
   echo "  = ruleset 'main protection' already exists"
 else
-  gh api "repos/$REPO/rulesets" --method POST \
-    --input "$SKILL_DIR/templates/.github/rulesets/main.json" >/dev/null \
-    && echo "  + ruleset 'main protection'" \
-    || echo "  ! ruleset skipped (needs admin + a paid plan for private repos)"
+  if err=$(gh api "repos/$REPO/rulesets" --method POST \
+      --input "$SKILL_DIR/templates/.github/rulesets/main.json" 2>&1); then
+    echo "  + ruleset 'main protection'"
+  else
+    case "$err" in
+      *403*|*422*|*Upgrade*)
+        echo "  ! ruleset skipped — needs admin (and a paid plan for private repos). main is NOT protected." ;;
+      *)
+        echo "  ! ruleset FAILED — main is NOT protected:" >&2
+        echo "    $err" >&2
+        exit 1 ;;
+    esac
+  fi
 fi
 
 # --- 5. Projects v2 board (best-effort; needs the 'project' gh scope) ---
