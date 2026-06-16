@@ -120,8 +120,8 @@ project ──▶ milestones ──▶ features ──▶ requirements ──▶
 
 ## 3. Issues
 
-**Title:** platform/area prefix + short imperative summary, e.g. `Web: add feedback
-endpoint`, `Mobile: fix passport pill titles`. The prefix mirrors the area label.
+**Title:** platform/area prefix + short imperative summary, e.g. `Web: add CSV
+export button`, `Mobile: fix profile chip labels`. The prefix mirrors the area label.
 
 **Labels — three independent axes, one of each (see §Configuration for the area
 vocabulary):**

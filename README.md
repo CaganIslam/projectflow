@@ -99,4 +99,4 @@ docs/adr/                   this repo's own decision records
 
 ## License
 
-MIT © Mustafa Çağan İslam
+MIT © CaganIslam
