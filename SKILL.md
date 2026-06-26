@@ -40,6 +40,37 @@ with a human in the loop.
 
 ---
 
+## 0.5 Deep skills (optional power-ups)
+
+projectflow orchestrates **what to do and when** (issues, gates, milestones, PRs).
+For the **how** of each step there are deeper, single-purpose skills that do that one
+thing rigorously. If your agent has them installed (e.g. the
+[superpowers](https://github.com/obra/superpowers) set), invoke the matching skill at
+each step for full depth. If it doesn't, follow projectflow's own inline guidance —
+nothing here depends on them.
+
+> **The rule, every step:** if the matching deep skill is installed, call it; else use
+> the short inline version described in this file. Deep skills are a power-up, never a
+> requirement — this repo stands on its own.
+
+| projectflow step | deep skill (if installed) | inline fallback |
+|---|---|---|
+| requirements → issues (§1.1) | `brainstorming` | clarify goal + acceptance criteria with the user first |
+| propose the approach (§1.3) | `writing-plans` | write the approach as numbered steps before coding |
+| implement (§1.3) | `test-driven-development` | failing test first, then the code to pass it |
+| independent parallel work (§3) | `dispatching-parallel-agents` | split into separate issues, no shared state |
+| branch isolation (§7) | `using-git-worktrees` | cut a fresh branch from current `main` |
+| a failure / test breaks (§5) | `systematic-debugging` | don't guess — find the root cause first |
+| before claiming "done" (§1.4) | `verification-before-completion` | run the command, show the evidence, no claims without output |
+| before opening a PR (§7) | `requesting-code-review` | review the diff with a fresh, separate eye |
+| acting on review feedback | `receiving-code-review` | verify each point technically before applying it |
+| merge / close the branch (§7) | `finishing-a-development-branch` | present merge / PR / cleanup options, then integrate |
+
+The loop below marks each step with its `↳ deep skill` so the hand-off points are
+obvious.
+
+---
+
 ## 1. The working loop
 
 This is the default mode. **Do not jump straight to writing code.**
@@ -71,19 +102,26 @@ This is the default mode. **Do not jump straight to writing code.**
    requirements (what it must do + acceptance criteria). Convert each requirement
    into a labeled issue (§3). Don't start from a vague ask — produce the issues
    first and show them.
+   `↳ deep skill: brainstorming` (clarify intent before any of this).
 2. **Show the backlog + priority.** Before working, list the relevant open issues
    and the order you'd tackle them (priority label + dependencies): *"here are the
    issues, here's the order."* Let the user steer.
 3. **Propose → approve → implement (one issue at a time).** For the issue you're
    about to do, first explain **how** you'll do it — approach, files you'll touch,
    the plan. Wait for approval. Only then implement.
+   `↳ deep skill: writing-plans` (the proposal) → `test-driven-development` (the
+   implementation) → `using-git-worktrees` (isolate the branch).
 4. **Verify — automated + manual.** After implementing:
    - run the automated/agent tests (unit, contract, flow — §6);
    - then give the user **explicit, numbered manual test steps** (what to open, what
      to do, what to expect) and let them do the physical pass;
    - it's done only when **both** pass.
+   `↳ deep skill: verification-before-completion` (no "done" without evidence) →
+   `systematic-debugging` (if anything breaks).
 5. **Record it.** Update `PROGRESS.md` (§2) with what was done. Open the PR (after
    approval), let it close the issue.
+   `↳ deep skill: requesting-code-review` (before the PR) → `receiving-code-review`
+   (on feedback) → `finishing-a-development-branch` (the merge).
 6. **Milestones & bug hunts.** Group issues into milestones (§4). At each milestone
    close, proactively ask **"should we run a bug hunt for this milestone?"** (§5).
 
@@ -156,6 +194,9 @@ gh issue edit <child> --add-parent <epic> --add-blocked-by <backend-issue>
 A blocked issue is **real** state now (board shows a "Blocked" badge), so never start
 an issue that's still blocked.
 
+`↳ deep skill: dispatching-parallel-agents` — when several unblocked issues are
+genuinely independent (no shared state), work them in parallel instead of serially.
+
 ---
 
 ## 4. Milestones
@@ -188,6 +229,9 @@ round 1: search for defects (edge cases, error paths, untested branches, contrac
    │                      label priority, assign to a milestone → go again
    └─ no new bugs for 2 consecutive rounds → stop, report the backlog
 ```
+
+`↳ deep skill: systematic-debugging` — when a hunt turns up a real failure, find the
+root cause before proposing a fix; don't patch the symptom.
 
 Rules:
 - **File, don't silently fix.** Each bug becomes a `bug` issue with repro steps and

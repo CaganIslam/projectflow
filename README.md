@@ -10,6 +10,12 @@ The idea in one line: **requirements become issues, issues are worked one at a t
 behind an approval gate, every change is verified by automation _and_ a guided manual
 pass, and the project keeps living docs so context is never lost.**
 
+> **Recommended companion:** projectflow runs great on its own, but it's designed to
+> hand off the *how* of each step to the [superpowers](https://github.com/obra/superpowers)
+> skills (TDD, planning, debugging, code review, …). Install those too for the full
+> experience — see [Install](#install). Without them, projectflow falls back to its own
+> built-in guidance, so nothing breaks.
+
 ## The loop
 
 ```
@@ -52,6 +58,16 @@ pass, and the project keeps living docs so context is never lost.**
 - **One-shot setup** — a bootstrap script that provisions all of the above in a fresh
   repo.
 
+## Pairs with deep skills (optional)
+
+projectflow handles **what to do and when**. For the **how** of each step it hands off
+to deeper single-purpose skills when they're installed — e.g. the
+[superpowers](https://github.com/obra/superpowers) set: `brainstorming` to scope work,
+`writing-plans`, `test-driven-development`, `systematic-debugging`,
+`verification-before-completion`, `requesting-code-review`, and more. Each loop step in
+`SKILL.md` is marked with its matching `↳ deep skill`. If those skills aren't
+installed, projectflow's own inline guidance takes over — nothing here depends on them.
+
 ## Install
 
 Copy the skill into your agent's skills directory:
@@ -65,6 +81,20 @@ git clone https://github.com/CaganIslam/projectflow \
 Then invoke it (`/projectflow`) or let it trigger on phrases like
 "let's plan this feature", "break this into issues", "run a bug hunt", "set up the
 repo".
+
+**Recommended — also install superpowers** (the deep skills each step hands off to):
+
+```bash
+# Claude Code plugin (auto-updates, adds the session hook)
+/plugin install superpowers@claude-plugins-official
+
+# …or copy the skills manually
+git clone https://github.com/obra/superpowers /tmp/superpowers
+cp -R /tmp/superpowers/skills/* ~/.claude/skills/
+```
+
+projectflow detects them automatically — if they're absent it uses its own inline
+guidance instead, so this step is optional but recommended.
 
 ## Use it on a project
 
