@@ -37,6 +37,7 @@ with a human in the loop.
   author's.
 - **Keep messages short and plain.** Commit and PR descriptions are explanatory but
   simple and brief — what changed and why, no filler.
+- **End every turn with an action plan.** Close *every* response — issue turn or not — with **to-dos / open decisions / next** (omit empty buckets, always keep *Next*), as the very last thing in the message, nothing after it. See §0.6.
 
 ---
 
@@ -68,6 +69,28 @@ nothing here depends on them.
 
 The loop below marks each step with its `↳ deep skill` so the hand-off points are
 obvious.
+
+---
+
+## 0.6 End-of-turn action plan (always last)
+
+**Close every turn with a short action plan — not just issue turns.** It is the
+**last thing** in the message, every time, with nothing after it. Three buckets,
+each a single terse line:
+
+- **To-dos** — work that's queued or in flight.
+- **Open decisions** — what's waiting on the maintainer to call.
+- **Next** — the single immediate next step.
+
+**Omit any empty bucket, but always keep _Next_.** It's a status footer, not a
+recap — keep it tight, no filler. Template:
+
+```
+Action plan
+- To-dos: <queued work, if any>
+- Open decisions: <what needs the maintainer's call, if any>
+- Next: <the immediate next step>
+```
 
 ---
 
@@ -106,9 +129,19 @@ This is the default mode. **Do not jump straight to writing code.**
 2. **Show the backlog + priority.** Before working, list the relevant open issues
    and the order you'd tackle them (priority label + dependencies): *"here are the
    issues, here's the order."* Let the user steer.
-3. **Propose → approve → implement (one issue at a time).** For the issue you're
-   about to do, first explain **how** you'll do it — approach, files you'll touch,
-   the plan. Wait for approval. Only then implement.
+3. **Propose → approve → implement (one issue at a time).** The gate is fixed and
+   never skipped: **propose**, wait for explicit approval, and **only then
+   implement** — no code ahead of the go-ahead. The proposal has two parts:
+   - **(a) Present the issue — plain language, never a file dump.** Lead with purpose
+     and effect: **what** it is, **what it's for** (its value), **what it does** (the
+     behaviour), and **what it changes** (the effect on the product/system — **not
+     file paths**). Don't recite the files you'll touch.
+   - **(b) Then the approach — the *how*, in a sentence or two.** Name a file only
+     where it's load-bearing to explaining the how; the **exhaustive file list is
+     never recited** — it lives, written, in the issue body's `## Files` field (§3),
+     which stays intact as the engineering spec. This rule governs the
+     *conversational* proposal only; the written issue body is untouched.
+   Wait for approval. Only then implement.
    `↳ deep skill: writing-plans` (the proposal) → `test-driven-development` (the
    implementation) → `using-git-worktrees` (isolate the branch).
 4. **Verify — automated + manual.** After implementing:
@@ -305,13 +338,19 @@ gh pr create --base main --title "feat(<area>): <subject>" \
 
 1. Requirements → labeled issues (one per area, linked).
 2. Show backlog + priority; user steers.
-3. Per issue: **propose → approve → implement**.
+3. Per issue: **propose → approve → implement** — the proposal **leads in plain
+   language** (**what it is / what it's for / what it does / what it changes** —
+   purpose and effect first), **never a file dump**; the issue body's `## Files`
+   field stays as the written spec and the approval gate is unchanged.
 4. Verify: the agent runs everything runnable itself (tests, lint, CLI smoke) and
    reports output; manual steps are **only** genuine human-hands/eyes checks (UI, look/sound).
 5. Update `PROGRESS.md`; open PR (`Closes #N`, short body) after approval; review;
    merge.
 6. At each milestone close: **offer a bug hunt**; loop until dry.
 7. Keep `BLUEPRINT.md` / `ARCHITECTURE.md` current as the plan/structure evolves.
+8. **Every turn** (not just issue turns): end with a short **action plan** — **to-dos
+   / open decisions / next** (omit empty buckets, always keep *Next*), as the very
+   last line (§0.6).
 
 ---
 
