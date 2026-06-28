@@ -37,6 +37,7 @@ with a human in the loop.
   author's.
 - **Keep messages short and plain.** Commit and PR descriptions are explanatory but
   simple and brief — what changed and why, no filler.
+- **Repo language is English.** Everything committed to the repo — code, comments, docstrings, human-readable strings, docs, commit/PR/issue text — is written in English (or the project's declared working language). The one exception: converse with the maintainer in their own language.
 - **End every turn with an action plan.** Close *every* response — issue turn or not — with **to-dos / open decisions / next** (omit empty buckets, always keep *Next*), as the very last thing in the message, nothing after it. See §0.6.
 
 ---
