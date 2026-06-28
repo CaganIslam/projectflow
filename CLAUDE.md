@@ -13,7 +13,9 @@ and keep the living docs current.
 1. Requirements → labeled issues (one per area, linked). Don't code from a vague ask.
 2. Show the backlog + priority; let the maintainer steer.
 3. Per issue: **propose the approach, get approval, then implement** — one at a time.
-4. Verify with automated tests **and** numbered manual steps the maintainer runs.
+4. Verify: the agent runs everything runnable itself (tests, lint, build, CLI smoke) and
+   reports the output; "manual steps" are **only** genuine human-hands/eyes checks (UI
+   clicks, judging look/sound). If nothing needs human hands, there's no manual step.
 5. Open a PR (`Closes #N`) after approval; reviewed + approved before merge.
 6. At each milestone close, offer a **bug hunt**.
 

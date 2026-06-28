@@ -113,9 +113,15 @@ This is the default mode. **Do not jump straight to writing code.**
    implementation) → `using-git-worktrees` (isolate the branch).
 4. **Verify — automated + manual.** After implementing:
    - run the automated/agent tests (unit, contract, flow — §6);
-   - then give the user **explicit, numbered manual test steps** (what to open, what
-     to do, what to expect) and let them do the physical pass;
-   - it's done only when **both** pass.
+   - **anything runnable, the agent runs itself** — tests, linters, build, type checks,
+     `curl`/CLI smoke calls, one-off scripts — and reports the actual output as evidence.
+     Never hand a command to the user and call it a "manual step."
+   - **"Manual test steps" = only what genuinely needs human hands or human judgment:**
+     clicking through a UI, judging whether output *looks/sounds* right, a visual/UX call,
+     a physical device. Give those as explicit, numbered steps (what to open, what to do,
+     what to expect). **If nothing needs human hands, there is no manual step** — the agent
+     verifies everything and says so.
+   - it's done only when the automated checks pass **and** any genuine manual checks pass.
    `↳ deep skill: verification-before-completion` (no "done" without evidence) →
    `systematic-debugging` (if anything breaks).
 5. **Record it.** Update `PROGRESS.md` (§2) with what was done. Open the PR (after
@@ -300,7 +306,8 @@ gh pr create --base main --title "feat(<area>): <subject>" \
 1. Requirements → labeled issues (one per area, linked).
 2. Show backlog + priority; user steers.
 3. Per issue: **propose → approve → implement**.
-4. Verify: automated tests **+** numbered manual steps the user runs.
+4. Verify: the agent runs everything runnable itself (tests, lint, CLI smoke) and
+   reports output; manual steps are **only** genuine human-hands/eyes checks (UI, look/sound).
 5. Update `PROGRESS.md`; open PR (`Closes #N`, short body) after approval; review;
    merge.
 6. At each milestone close: **offer a bug hunt**; loop until dry.
