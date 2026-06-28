@@ -8,6 +8,8 @@ and keep the living docs current.
 - `docs/ARCHITECTURE.md` — constraints, structure, and the patterns/methods we use.
   Follow these instead of inventing new ones.
 - `docs/PROGRESS.md` — what's been done. **Update it after every issue/PR.**
+- `docs/STACK.md` — the stack and every external provider: env keys, plans/costs, and
+  **where each piece of data goes**. Consult it before adding a dependency or sending data off-box.
 
 ## How we work
 1. Requirements → labeled issues (one per area, linked). Don't code from a vague ask.

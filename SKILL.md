@@ -169,7 +169,7 @@ This is the default mode. **Do not jump straight to writing code.**
 
 ## 2. Living project docs (keep these current)
 
-Every project carries three living docs (created by the bootstrap, then maintained).
+Every project carries four living docs (created by the bootstrap, then maintained).
 They are the project's memory — read them before acting, update them after.
 
 | File | Role | When updated |
@@ -177,6 +177,7 @@ They are the project's memory — read them before acting, update them after.
 | `docs/BLUEPRINT.md` | **The plan / schema** — what the project is, how it will be built, the milestone roadmap, a flow diagram | At project start; whenever the plan changes |
 | `docs/ARCHITECTURE.md` | **The constraints & structure** — tech choices, folder structure, the patterns/methods used, coding constraints ("we always do X this way") | When a structural decision is made (link an ADR, §see docs/adr) |
 | `docs/PROGRESS.md` | **The memory log** — what has been done so far, newest first | After every issue/PR/milestone |
+| `docs/STACK.md` | **The stack & providers** — the internal stack plus every external provider/dependency, each with role, tier, env var(s), data sent, residency, cost, and link; the one place for which keys are needed and where each piece of data goes | When a provider/dependency is added, dropped, or re-tiered, or its keys/data-flow change |
 
 **Rules:**
 - **Before writing code**, consult `ARCHITECTURE.md` so new work follows the
@@ -184,8 +185,11 @@ They are the project's memory — read them before acting, update them after.
 - **After finishing an issue**, append a `PROGRESS.md` entry: date, issue #, what
   changed, anything notable for next time.
 - Keep `BLUEPRINT.md` honest — if the plan shifts, the schema shifts with it.
+- `STACK.md` records **data residency per provider** (what's sent, where it lands), so it
+  doubles as the privacy/data-flow map — check it before sending confidential data anywhere
+  and keep it aligned with the data-privacy allowlist.
 - These are committed docs, so the method travels with the repo (not just one
-  machine). A repo-root `CLAUDE.md` points the agent at all three.
+  machine). A repo-root `CLAUDE.md` points the agent at all four.
 
 `BLUEPRINT.md` should open with a simple schema, e.g.:
 
@@ -383,7 +387,7 @@ templates/.github/
   PULL_REQUEST_TEMPLATE.md                   Summary + Closes #N + DoD checklist
   rulesets/main.json                         branch protection (approval + checks)
 docs/adr/                      architecture decision records (the "why")
-docs/{BLUEPRINT,ARCHITECTURE,PROGRESS}.md    seeded by the bootstrap (the living docs)
+docs/{BLUEPRINT,ARCHITECTURE,PROGRESS,STACK}.md  seeded by the bootstrap (the living docs)
 ```
 
 ---
