@@ -39,6 +39,7 @@ with a human in the loop.
   simple and brief — what changed and why, no filler.
 - **Repo language is English.** Everything committed to the repo — code, comments, docstrings, human-readable strings, docs, commit/PR/issue text — is written in English (or the project's declared working language). The one exception: converse with the maintainer in their own language.
 - **End every turn with an action plan.** Close *every* response — issue turn or not — with **to-dos / open decisions / next** (omit empty buckets, always keep *Next*), as the very last thing in the message, nothing after it. See §0.6.
+- **Check the deep-skill table every turn.** Before acting, identify which projectflow step this turn is (plan, implement, debug, verify, PR, …) and look it up in the §0.5 table. If that step genuinely needs its mapped deep skill *and* the skill is installed, **invoke it before doing the step** — don't skip it because the work "looks small". If the turn isn't a projectflow step, or the step doesn't need it, say nothing and move on. The judgment of *whether it's needed* is yours; the obligation to *look* is not optional.
 
 ---
 
@@ -51,9 +52,12 @@ thing rigorously. If your agent has them installed (e.g. the
 each step for full depth. If it doesn't, follow projectflow's own inline guidance —
 nothing here depends on them.
 
-> **The rule, every step:** if the matching deep skill is installed, call it; else use
-> the short inline version described in this file. Deep skills are a power-up, never a
-> requirement — this repo stands on its own.
+> **The rule, every step:** every turn, check this table for the step you're on (see the
+> always-on guardrail in §0). If the matching deep skill is installed *and* the step
+> genuinely needs it, call it before doing the step; else use the short inline version
+> described in this file. Looking is mandatory; whether the step needs the skill is a
+> judgment call. Deep skills are a power-up, never a requirement — this repo stands on
+> its own.
 
 | projectflow step | deep skill (if installed) | inline fallback |
 |---|---|---|

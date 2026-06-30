@@ -44,3 +44,6 @@ and keep the living docs current.
 - Keep commit/PR descriptions explanatory but short and plain.
 - **End every turn with a short action plan** — to-dos / open decisions / **next**
   (omit empty buckets, always keep *Next*), as the last thing in the message.
+- **Every turn, check the deep-skill table** (SKILL.md §0.5): find this turn's step,
+  and if it genuinely needs its mapped deep skill, invoke that skill before doing the
+  step. Looking is mandatory; whether it's needed is a judgment call.
