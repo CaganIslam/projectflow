@@ -74,7 +74,7 @@ nothing here depends on them.
 | a failure / test breaks (§5) | `systematic-debugging` | don't guess — find the root cause first |
 | before claiming "done" (§1 step 4) | `verification-before-completion` | run the command, show the evidence, no claims without output |
 | before opening a PR (§7) | `requesting-code-review` | review the diff with a fresh, separate eye |
-| acting on review feedback | `receiving-code-review` | verify each point technically before applying it |
+| acting on review feedback (§1 step 5) | `receiving-code-review` | verify each point technically before applying it |
 | merge / close the branch (§7) | `finishing-a-development-branch` | present merge / PR / cleanup options, then integrate |
 
 The loop below marks each step with its `↳ deep skill` so the hand-off points are
@@ -340,6 +340,8 @@ Rules:
 
 QA is a separate, labeled, milestone-scoped track (not buried in feature tickets).
 
+`↳ deep skill: test-driven-development` (writing the suites) → `verification-before-completion` (evidence) — see §1 steps 3-4.
+
 - A `testing` label + an `Integration/QA/Demo` milestone; one issue per layer
   (unit per area, integration, bug bash, demo rehearsal, final report).
 - **Two automated layers:** a **contract suite** that asserts only status + shape +
@@ -359,6 +361,7 @@ QA is a separate, labeled, milestone-scoped track (not buried in feature tickets
 
 - **Branch:** `<type>/<area>/<slug>-<issueNumber>` (compound area like `mobile-backend`
   for cross-area). Always cut from current `main`.
+  `↳ deep skill: using-git-worktrees` — isolate the branch in its own workspace.
 - **Commit & PR title:** Conventional Commits with an area scope —
   `<type>(<area>): subject`. One concern per commit. (Linted by
   `commitlint.config.js` + the PR-title check — match the configured type/scope enums.)
@@ -367,6 +370,11 @@ QA is a separate, labeled, milestone-scoped track (not buried in feature tickets
   PRs, a numbered `Cause → Change → Result` per fix. No AI attribution, no filler.
 - **Reviewed + APPROVED before merge** (author ≠ reviewer; GitHub forbids
   self-approval). The `main` ruleset enforces approval + green checks + no force-push.
+  `↳ deep skill: finishing-a-development-branch` — present merge / PR / cleanup options,
+  then integrate.
+
+`↳ deep skill: requesting-code-review` — review the diff with a fresh, separate eye
+before opening the PR.
 
 ```bash
 git checkout main && git pull && git checkout -b feat/<area>/<slug>-<issue>
@@ -409,6 +417,8 @@ gh pr create --base main --title "feat(<area>): <subject>" \
 7. Keep `BLUEPRINT.md` / `ARCHITECTURE.md` current as the plan/structure evolves.
 8. **Every turn** (not just issue turns): end with a short **action plan** as the very
    last line — see §0.6 for the format.
+
+Each step hands off to its matching deep skill where installed — see the §0.5 table.
 
 ---
 

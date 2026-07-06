@@ -93,3 +93,6 @@ gh project create --owner "$owner" --title "$(basename "$REPO")" >/dev/null 2>&1
 
 say "Done. Next: edit docs/BLUEPRINT.md, docs/ARCHITECTURE.md, docs/STACK.md (fill in providers/keys),"
 echo  "  commitlint.config.js (areas), and the Discussions URL in .github/ISSUE_TEMPLATE/config.yml."
+echo  "  Optional (agent-side install, not a repo change): add the superpowers deep skills"
+echo  "  (github.com/obra/superpowers) for full depth — TDD, planning, review, debugging;"
+echo  "  projectflow falls back to inline guidance without them."

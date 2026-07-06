@@ -50,6 +50,22 @@ and keep the living docs current.
 - Keep commit/PR descriptions explanatory but short and plain.
 - **End every turn with a short action plan** — to-dos / open decisions / **next**
   (omit empty buckets, always keep *Next*), as the last thing in the message.
-- **Every turn, check the deep-skill table** (SKILL.md §0.5): find this turn's step,
-  and if it genuinely needs its mapped deep skill, invoke that skill before doing the
-  step. Looking is mandatory; whether it's needed is a judgment call.
+- **Every turn, check the deep-skill table** (below; full table in SKILL.md §0.5): find
+  this turn's step, and if the mapped skill is installed **and** the step genuinely needs
+  it, invoke it before doing the step; otherwise use projectflow's inline guidance.
+  Optional power-up, never required. Looking is mandatory; whether it's needed is a
+  judgment call.
+  (install: github.com/obra/superpowers — optional; without them projectflow uses its
+  inline guidance.)
+
+  | Step | Deep skill(s) if installed |
+  | --- | --- |
+  | discovery / feasibility (new project) | `brainstorming` · `deep-research` · `writing-plans` |
+  | requirements → issues | `brainstorming` |
+  | propose the approach / plan | `writing-plans` |
+  | implement | `test-driven-development` · `using-git-worktrees` |
+  | independent parallel work | `dispatching-parallel-agents` |
+  | a test breaks / a failure | `systematic-debugging` |
+  | before claiming "done" | `verification-before-completion` |
+  | before a PR / on review feedback | `requesting-code-review` · `receiving-code-review` |
+  | merge / close the branch | `finishing-a-development-branch` |
