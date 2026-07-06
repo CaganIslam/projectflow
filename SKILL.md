@@ -6,7 +6,9 @@ description: >-
   implement, then verify with automated tests plus guided manual checks), keep
   living project docs (blueprint, architecture, progress) up to date, hunt bugs in
   a loop, and ship through milestones with PRs that close issues. Use when starting
-  a new project, planning a feature, breaking work into issues or milestones,
+  a new project, validating whether a new idea is worth building (competitor / gap /
+  feasibility research before committing), planning a feature, breaking work into
+  issues or milestones,
   running a bug hunt, opening or reviewing PRs, or setting up a repo's
   labels/templates/branch rules.
 ---
@@ -61,6 +63,7 @@ nothing here depends on them.
 
 | projectflow step | deep skill (if installed) | inline fallback |
 |---|---|---|
+| discovery / feasibility (§1.0) — new/greenfield | `brainstorming` + research fan-out (`dispatching-parallel-agents`, `deep-research`) → `writing-plans` on a go | research worth-doing / rivals / gap / evidence yourself; decide go/no-go; then plan |
 | requirements → issues (§1.1) | `brainstorming` | clarify goal + acceptance criteria with the user first |
 | propose the approach (§1.3) | `writing-plans` | write the approach as numbered steps before coding |
 | implement (§1.3) | `test-driven-development` | failing test first, then the code to pass it |
@@ -101,7 +104,45 @@ Action plan
 
 ## 1. The working loop
 
-This is the default mode. **Do not jump straight to writing code.**
+This is the default mode. **Do not jump straight to writing code** — and for a
+brand-new idea, don't jump straight to issues either: validate it first (§1.0).
+
+### 1.0 Phase 0 — Discovery & feasibility (new project / greenfield idea)
+
+**For a brand-new project — or a greenfield feature whose problem space isn't already
+understood — run a discovery pass *before* the loop. Don't turn an unvalidated idea
+into issues.** Skip it for well-understood work (a bugfix, a small change on an existing
+system, anything where "should we / what already exists" is already answered) — go
+straight to §1.1.
+
+Discovery is real research (web + primary sources, one fan-out per angle), not a guess:
+
+- **Worth doing?** — is the problem real, who feels it, does the idea hold up.
+- **Competitors / prior art** — who already does this or something adjacent, what they
+  do, why it's good or bad, their strengths and gaps.
+- **White space** — a genuine gap / unmet need / problem to own, or is the lane full.
+- **How we'd build it** — what to make, what to add, which approaches/structures fit.
+- **Evidence** — academic papers and serious blog posts on the problem and the
+  approach, not just vendor pages.
+
+Write the findings as durable research docs (`docs/research/`), verify the high-stakes
+claims (numbers, competitor status, dates), and close with an explicit **decision —
+go / cautious-go / no-go — recorded in `BLUEPRINT.md`.** Honest, cheap research before
+any build commitment: a no-go here costs days, not months, and is a win.
+
+**Then trigger the plan.** On a go (or cautious-go), hand the validated direction to
+`writing-plans` — the discovery output *is* the spec that skill triggers on — and the
+plan it produces becomes the requirements + issues of the loop. The front of a new
+project reads **discover → decide → plan → issues**, never straight-to-issues.
+
+`↳ deep skill: brainstorming` (frame the idea + the questions) → research fan-out
+(`dispatching-parallel-agents`, or `deep-research` if installed; else run the web
+research yourself, one angle at a time) → `writing-plans` (turn the go decision into a
+plan).
+
+---
+
+The per-issue loop (Phase 0's go-decision + plan feed in as the *requirements*):
 
 ```
   requirements ──▶ issues (labeled + milestoned)
@@ -345,6 +386,10 @@ gh pr create --base main --title "feat(<area>): <subject>" \
 
 ## 9. End-to-end (the short version)
 
+0. **New project / greenfield?** Run **Phase 0 — discovery + feasibility** first
+   (worth-doing / competitors / white-space / academic + blog evidence), record a
+   **go / cautious-go / no-go** in `BLUEPRINT.md`, and on a go hand the validated idea
+   to `writing-plans` before any issues (§1.0). Skip to step 1 for well-understood work.
 1. Requirements → labeled issues (one per area, linked).
 2. Show backlog + priority; user steers.
 3. Per issue: **propose → approve → implement** — the proposal **leads in plain
