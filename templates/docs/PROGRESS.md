@@ -13,4 +13,4 @@
 
 ## (start)
 - Repo bootstrapped with the projectflow method.
-- Living docs created: BLUEPRINT, ARCHITECTURE, PROGRESS.
+- Living docs created: BLUEPRINT, ARCHITECTURE, PROGRESS, STACK.

@@ -7,8 +7,9 @@ A disciplined, issue-driven way to build software on GitHub — packaged as an
 it with a human in the loop.
 
 The idea in one line: **requirements become issues, issues are worked one at a time
-behind an approval gate, every change is verified by automation _and_ a guided manual
-pass, and the project keeps living docs so context is never lost.**
+behind an approval gate, every change is verified by automated tests plus guided manual
+checks where human judgment is needed, and the project keeps living docs so context is
+never lost.**
 
 > **Recommended companion:** projectflow runs great on its own, but it's designed to
 > hand off the *how* of each step to the [superpowers](https://github.com/obra/superpowers)
@@ -22,6 +23,9 @@ New project? A **Phase 0 discovery pass** (worth-doing / competitors / gap / evi
 → go/no-go → `writing-plans`) runs first; the per-issue loop then takes over:
 
 ```
+  new / greenfield idea ──▶ Phase 0: discovery + feasibility ──▶ go/no-go ──▶ writing-plans
+                      │        (skip for small work on an existing system)
+                      ▼
   requirements ──▶ issues (labeled + milestoned)
                       │
                       ▼
@@ -34,7 +38,7 @@ New project? A **Phase 0 discovery pass** (worth-doing / competitors / gap / evi
                                    verify: automated tests
                                                   │
                                                   ▼
-                                   MANUAL test steps ──▶ you confirm
+                     MANUAL steps (only if human judgment needed) ──▶ you confirm
                                                   │
                                                   ▼
                               PR (Closes #N) ──▶ review ──▶ merge
@@ -58,7 +62,9 @@ New project? A **Phase 0 discovery pass** (worth-doing / competitors / gap / evi
 - **A bug-hunt loop** — keep finding bugs until a dry pass; each becomes a tracked
   `bug` issue, split across milestones by priority. Offered at every milestone close.
 - **Living project docs** — `BLUEPRINT.md` (the plan), `ARCHITECTURE.md` (constraints
-  & structure), `PROGRESS.md` (a continuously-updated memory of what's been done).
+  & structure), `PROGRESS.md` (a continuously-updated memory of what's been done), and
+  `STACK.md` (the tech stack + external providers + env keys + per-provider
+  data-residency map).
 - **Enforced merge rules** — a `main` ruleset (approval + green checks + no
   force-push) and conventional-commit / PR-title linting.
 - **One-shot setup** — a bootstrap script that provisions all of the above in a fresh
@@ -109,7 +115,7 @@ scripts/bootstrap-repo.sh <owner>/<repo>
 ```
 
 This creates the label set, the milestones, the issue/PR templates, the `main`
-ruleset, a Projects board, and seeds the three living docs + `CLAUDE.md`. It's
+ruleset, a Projects board, and seeds the four living docs + `CLAUDE.md`. It's
 idempotent — safe to re-run to reconcile an existing repo.
 
 ## Configure

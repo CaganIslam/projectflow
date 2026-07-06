@@ -25,11 +25,14 @@ cp -Rn "$SKILL_DIR/templates/.github/." "$TARGET/.github/"  # -n: never clobber 
 cp -n "$SKILL_DIR/commitlint.config.js" "$TARGET/commitlint.config.js" 2>/dev/null || true
 cp -n "$SKILL_DIR/CLAUDE.md" "$TARGET/CLAUDE.md" 2>/dev/null || true
 # Living docs + ADRs: copy only if absent so we don't clobber real content.
-for f in BLUEPRINT.md ARCHITECTURE.md PROGRESS.md; do
+for f in BLUEPRINT.md ARCHITECTURE.md PROGRESS.md STACK.md; do
   cp -n "$SKILL_DIR/templates/docs/$f" "$TARGET/docs/$f" 2>/dev/null || true
 done
 mkdir -p "$TARGET/docs/adr"
 cp -n "$SKILL_DIR/templates/docs/adr/"*.md "$TARGET/docs/adr/" 2>/dev/null || true
+# Home for Phase 0 discovery/feasibility research docs (track the empty dir).
+mkdir -p "$TARGET/docs/research"
+: > "$TARGET/docs/research/.gitkeep"
 
 # --- 2. Labels (idempotent: create or update) ---
 label() { gh label create "$1" -c "$2" -d "$3" -R "$REPO" 2>/dev/null \
@@ -88,5 +91,5 @@ gh project create --owner "$owner" --title "$(basename "$REPO")" >/dev/null 2>&1
   && echo "  + project board" \
   || echo "  ! project skipped — run: gh auth refresh -s project,read:project"
 
-say "Done. Next: edit docs/BLUEPRINT.md, docs/ARCHITECTURE.md, commitlint.config.js (areas),"
-echo  "  and the Discussions URL in .github/ISSUE_TEMPLATE/config.yml."
+say "Done. Next: edit docs/BLUEPRINT.md, docs/ARCHITECTURE.md, docs/STACK.md (fill in providers/keys),"
+echo  "  commitlint.config.js (areas), and the Discussions URL in .github/ISSUE_TEMPLATE/config.yml."

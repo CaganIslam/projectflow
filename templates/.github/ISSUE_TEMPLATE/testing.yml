@@ -16,6 +16,9 @@ body:
         - Demo rehearsal / final report
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: "Runnable checks (tests, lint, build, curl) are run by the agent and pasted as evidence. Manual QA is only for genuine human-hands/eyes checks (UI clicks, judging look/sound)."
   - type: dropdown
     id: area
     attributes:

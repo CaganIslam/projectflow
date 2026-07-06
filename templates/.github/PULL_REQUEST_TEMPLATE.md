@@ -14,6 +14,6 @@ Closes #
 - [ ] `<type>(<area>): subject` title (conventional, linted)
 - [ ] One concern per commit
 - [ ] Automated tests pass (unit + contract/flow as needed)
-- [ ] Manual test steps written and passed
+- [ ] Manual test steps written and passed (or N/A — no human-hands check needed)
 - [ ] Linked issue's Definition of Done is satisfied
 - [ ] PROGRESS.md updated
