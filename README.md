@@ -18,6 +18,9 @@ pass, and the project keeps living docs so context is never lost.**
 
 ## The loop
 
+New project? A **Phase 0 discovery pass** (worth-doing / competitors / gap / evidence
+→ go/no-go → `writing-plans`) runs first; the per-issue loop then takes over:
+
 ```
   requirements ──▶ issues (labeled + milestoned)
                       │
@@ -43,6 +46,9 @@ pass, and the project keeps living docs so context is never lost.**
 
 ## What you get
 
+- **Discovery-first for new ideas** — a Phase 0 that validates worth-doing,
+  competitors, and white space with real research and a **go / cautious-go / no-go**
+  before anything is built, then hands the validated idea to `writing-plans`.
 - **3-axis labels** — `area:` (your layers) × `priority:` (high/medium/low,
   milestone-relative) × type (`feat`/`bug`/`enhancement`/`documentation`/`testing`).
 - **Structured issues** — issue forms that force an engineering-spec body

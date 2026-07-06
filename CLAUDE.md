@@ -12,6 +12,10 @@ and keep the living docs current.
   **where each piece of data goes**. Consult it before adding a dependency or sending data off-box.
 
 ## How we work
+0. **New project / greenfield?** Discovery + feasibility research first (worth-doing /
+   competitors / gap / academic + blog) → **go / cautious-go / no-go** in `BLUEPRINT.md`
+   → on a go, hand the validated idea to `writing-plans` → then issues. Skip for
+   well-understood or small work. (SKILL.md §1.0)
 1. Requirements → labeled issues (one per area, linked). Don't code from a vague ask.
 2. Show the backlog + priority; let the maintainer steer.
 3. Per issue: **propose → approve → implement** — one at a time. Present the issue in
