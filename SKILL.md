@@ -3,8 +3,9 @@ name: projectflow
 description: >-
   A disciplined, issue-driven GitHub workflow. Turn a feature's requirements into
   labeled issues, work them one at a time (propose the approach, get approval,
-  implement, then verify with automated tests plus guided manual checks), keep
-  living project docs (blueprint, architecture, progress) up to date, hunt bugs in
+  implement, then verify with automated tests plus guided manual checks where human
+  judgment is needed), keep
+  living project docs (blueprint, architecture, progress, stack) up to date, hunt bugs in
   a loop, and ship through milestones with PRs that close issues. Use when starting
   a new project, validating whether a new idea is worth building (competitor / gap /
   feasibility research before committing), planning a feature, breaking work into
@@ -17,7 +18,8 @@ description: >-
 
 A practical operating method for building software on GitHub: requirements become
 issues, issues are worked one at a time behind an approval gate, every change is
-verified by automation **and** a guided manual pass, and the project keeps three
+verified by automated tests plus guided manual checks where human judgment is
+needed, and the project keeps four
 living docs so context is never lost. Designed to be driven by an AI coding agent
 with a human in the loop.
 
@@ -39,9 +41,9 @@ with a human in the loop.
   author's.
 - **Keep messages short and plain.** Commit and PR descriptions are explanatory but
   simple and brief — what changed and why, no filler.
-- **Repo language is English.** Everything committed to the repo — code, comments, docstrings, human-readable strings, docs, commit/PR/issue text — is written in English (or the project's declared working language). The one exception: converse with the maintainer in their own language.
-- **End every turn with an action plan.** Close *every* response — issue turn or not — with **to-dos / open decisions / next** (omit empty buckets, always keep *Next*), as the very last thing in the message, nothing after it. See §0.6.
-- **Check the deep-skill table every turn.** Before acting, identify which projectflow step this turn is (plan, implement, debug, verify, PR, …) and look it up in the §0.5 table. If that step genuinely needs its mapped deep skill *and* the skill is installed, **invoke it before doing the step** — don't skip it because the work "looks small". If the turn isn't a projectflow step, or the step doesn't need it, say nothing and move on. The judgment of *whether it's needed* is yours; the obligation to *look* is not optional.
+- **Repo language is English by default.** Everything committed to the repo — code, comments, docstrings, human-readable strings, docs, commit/PR/issue text — is written in English, or the project's declared working language — see Configuration. The one exception: converse with the maintainer in their own language.
+- **End every turn with an action plan** (always on) — see §0.6 for the format.
+- **Check the deep-skill table every turn** (always on) — see the §0.5 table and rule; looking is mandatory, whether the step needs the skill is your judgment.
 
 ---
 
@@ -64,13 +66,13 @@ nothing here depends on them.
 | projectflow step | deep skill (if installed) | inline fallback |
 |---|---|---|
 | discovery / feasibility (§1.0) — new/greenfield | `brainstorming` + research fan-out (`dispatching-parallel-agents`, `deep-research`) → `writing-plans` on a go | research worth-doing / rivals / gap / evidence yourself; decide go/no-go; then plan |
-| requirements → issues (§1.1) | `brainstorming` | clarify goal + acceptance criteria with the user first |
-| propose the approach (§1.3) | `writing-plans` | write the approach as numbered steps before coding |
-| implement (§1.3) | `test-driven-development` | failing test first, then the code to pass it |
+| requirements → issues (§1 step 1) | `brainstorming` | clarify goal + acceptance criteria with the user first |
+| propose the approach (§1 step 3) | `writing-plans` | write the approach as numbered steps before coding |
+| implement (§1 step 3) | `test-driven-development` | failing test first, then the code to pass it |
 | independent parallel work (§3) | `dispatching-parallel-agents` | split into separate issues, no shared state |
 | branch isolation (§7) | `using-git-worktrees` | cut a fresh branch from current `main` |
 | a failure / test breaks (§5) | `systematic-debugging` | don't guess — find the root cause first |
-| before claiming "done" (§1.4) | `verification-before-completion` | run the command, show the evidence, no claims without output |
+| before claiming "done" (§1 step 4) | `verification-before-completion` | run the command, show the evidence, no claims without output |
 | before opening a PR (§7) | `requesting-code-review` | review the diff with a fresh, separate eye |
 | acting on review feedback | `receiving-code-review` | verify each point technically before applying it |
 | merge / close the branch (§7) | `finishing-a-development-branch` | present merge / PR / cleanup options, then integrate |
@@ -113,7 +115,7 @@ brand-new idea, don't jump straight to issues either: validate it first (§1.0).
 understood — run a discovery pass *before* the loop. Don't turn an unvalidated idea
 into issues.** Skip it for well-understood work (a bugfix, a small change on an existing
 system, anything where "should we / what already exists" is already answered) — go
-straight to §1.1.
+straight to §1 step 1.
 
 Discovery is real research (web + primary sources, one fan-out per angle), not a guess:
 
@@ -145,6 +147,9 @@ plan).
 The per-issue loop (Phase 0's go-decision + plan feed in as the *requirements*):
 
 ```
+  new/greenfield idea ──▶ Phase 0: discovery + feasibility ──▶ go/no-go ──▶ writing-plans
+       (skip for small work on an existing system)                              │
+                                                                                ▼
   requirements ──▶ issues (labeled + milestoned)
                       │
                       ▼
@@ -157,7 +162,7 @@ The per-issue loop (Phase 0's go-decision + plan feed in as the *requirements*):
                                    verify: automated/agent tests
                                                   │
                                                   ▼
-                                   give MANUAL test steps ──▶ user confirms
+                    MANUAL steps (only if human judgment needed) ──▶ user confirms
                                                   │
                                                   ▼
                               PR (Closes #N) ──▶ review ──▶ merge
@@ -231,8 +236,8 @@ They are the project's memory — read them before acting, update them after.
   changed, anything notable for next time.
 - Keep `BLUEPRINT.md` honest — if the plan shifts, the schema shifts with it.
 - `STACK.md` records **data residency per provider** (what's sent, where it lands), so it
-  doubles as the privacy/data-flow map — check it before sending confidential data anywhere
-  and keep it aligned with the data-privacy allowlist.
+  doubles as the privacy/data-flow map — check STACK.md before sending confidential data
+  to any provider.
 - These are committed docs, so the method travels with the repo (not just one
   machine). A repo-root `CLAUDE.md` points the agent at all four.
 
@@ -402,9 +407,8 @@ gh pr create --base main --title "feat(<area>): <subject>" \
    merge.
 6. At each milestone close: **offer a bug hunt**; loop until dry.
 7. Keep `BLUEPRINT.md` / `ARCHITECTURE.md` current as the plan/structure evolves.
-8. **Every turn** (not just issue turns): end with a short **action plan** — **to-dos
-   / open decisions / next** (omit empty buckets, always keep *Next*), as the very
-   last line (§0.6).
+8. **Every turn** (not just issue turns): end with a short **action plan** as the very
+   last line — see §0.6 for the format.
 
 ---
 
@@ -419,6 +423,8 @@ them):
 - **milestone scheme** — numbered iterations + named gates that fit your timeline.
 - **test commands** — the real commands for the unit/contract/flow suites.
 - **traceability** — the spec system issues map back to (req IDs, a PRD, etc.).
+- **working language** — the language repo artifacts are written in: `English (default)`.
+  Change it only if the project deliberately writes its artifacts in another language.
 
 ---
 

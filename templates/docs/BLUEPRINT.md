@@ -5,6 +5,11 @@
 ## What we're building
 <one paragraph: the product and who it's for>
 
+## Discovery decision (go / cautious-go / no-go)
+- decision: <go | cautious-go | no-go>
+- rationale: <one line: why — worth-doing, competitors, gap, feasibility>
+- findings: <link to docs/research/ — the discovery + feasibility notes>
+
 ## How it's built (schema)
 ```
 project ──▶ milestones ──▶ features ──▶ requirements ──▶ issues ──▶ PRs ──▶ release

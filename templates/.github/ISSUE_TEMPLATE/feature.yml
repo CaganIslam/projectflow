@@ -70,7 +70,7 @@ body:
       label: Definition of Done
       options:
         - label: Automated tests added/updated (unit + contract/flow as needed)
-        - label: Manual test steps written and passed
+        - label: Manual test steps written and passed (or N/A — no human-hands check needed)
         - label: Docs / ADR updated if the change is structural
         - label: PROGRESS.md updated
         - label: Reviewed and approved (author ≠ reviewer)
