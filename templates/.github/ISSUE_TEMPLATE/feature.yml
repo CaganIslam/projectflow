@@ -44,10 +44,14 @@ body:
     validations:
       required: true
   - type: textarea
-    id: fix
+    id: options
     attributes:
-      label: Approach / Fix
-      description: Concrete plan. Put API / JSON / model contracts in fenced code blocks.
+      label: Options
+      description: >-
+        The viable approaches, one line of trade-off each - don't pre-decide here.
+        The implementer picks one at propose time and the choice is recorded on the
+        issue. Decisions that reach beyond this issue belong in BLUEPRINT.md or an
+        ADR instead. Put API / JSON / model contracts in fenced code blocks.
       render: markdown
   - type: textarea
     id: files

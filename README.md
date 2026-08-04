@@ -56,7 +56,10 @@ New project? A **Phase 0 discovery pass** (worth-doing / competitors / gap / evi
 - **3-axis labels** — `area:` (your layers) × `priority:` (high/medium/low,
   milestone-relative) × type (`feat`/`bug`/`enhancement`/`documentation`/`testing`).
 - **Structured issues** — issue forms that force an engineering-spec body
-  (Problem / Wanted / Fix / Files / Definition of Done) and apply the right labels.
+  (Problem / Wanted / Options / Files / Definition of Done) and apply the right labels.
+- **Decisions at the last responsible moment** — issues carry options with trade-offs
+  instead of premature picks; the implementer decides at propose time with the code in
+  front of them, and cross-cutting calls go to the blueprint or an ADR upfront.
 - **Milestones as gates** — numbered iterations + named release gates that double as
   a dashboard (version, tag, deliverables, deadlines).
 - **A bug-hunt loop** — keep finding bugs until a dry pass; each becomes a tracked

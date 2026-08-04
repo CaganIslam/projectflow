@@ -175,7 +175,9 @@ The per-issue loop (Phase 0's go-decision + plan feed in as the *requirements*):
 1. **Requirements → issues.** For any new feature or chunk of work, first write the
    requirements (what it must do + acceptance criteria). Convert each requirement
    into a labeled issue (§3). Don't start from a vague ask — produce the issues
-   first and show them.
+   first and show them. Where a requirement admits more than one viable approach,
+   write the options into the issue instead of deciding early (§3 — options, not
+   decisions); only cross-cutting calls are settled now, in `BLUEPRINT.md` or an ADR.
    `↳ deep skill: brainstorming` (clarify intent before any of this).
 2. **Show the backlog + priority.** Before working, list the relevant open issues
    and the order you'd tackle them (priority label + dependencies): *"here are the
@@ -187,7 +189,10 @@ The per-issue loop (Phase 0's go-decision + plan feed in as the *requirements*):
      and effect: **what** it is, **what it's for** (its value), **what it does** (the
      behaviour), and **what it changes** (the effect on the product/system — **not
      file paths**). Don't recite the files you'll touch.
-   - **(b) Then the approach — the *how*, in a sentence or two.** Name a file only
+   - **(b) Then the approach — the *how*, in a sentence or two.** If the issue
+     carries an `## Options` list (§3), this is where the decision happens: name the
+     option you'd pick and the one-line why, with the current code in front of you.
+     Approval locks it in — record the pick on the issue. Name a file only
      where it's load-bearing to explaining the how; the **exhaustive file list is
      never recited** — it lives, written, in the issue body's `## Files` field (§3),
      which stays intact as the engineering spec. This rule governs the
@@ -269,10 +274,27 @@ vocabulary):**
 ```markdown
 ## Problem      <what's wrong / needed, with file:line refs>
 ## Wanted/Scope <what we want>
-## Fix          <concrete approach; API/JSON/model contracts in code blocks>
+## Options      <the viable approaches, one line of trade-off each; no premature pick>
 ## Files        <paths you'll touch>
 ## Definition of Done  <checkboxes: tests added, contract/flow green, reviewed>
 ```
+
+**Options, not decisions — defer local calls to the propose step.** When scope and
+features turn into issues, don't hard-code implementation decisions into them. The
+issue carries the viable approaches (`## Options`, each with a one-line trade-off,
+contracts in fenced code blocks where they differ); whoever picks up the issue decides
+at propose time (§1 step 3), with the current code in front of them, and the
+maintainer's approval locks the pick in. Rules:
+
+- **Only issue-local decisions are deferred.** Anything that reaches beyond the
+  issue's own files — a shared contract, a pattern other issues will follow, a
+  dependency choice — is decided upfront in `BLUEPRINT.md` or an ADR, and the issue
+  references that decision instead of re-opening it.
+- **Record the pick.** Once an option is chosen, note it (and the one-line why) as a
+  comment on the issue — or an ADR if it turned out structural — so the decision is
+  traceable later.
+- A single obvious approach needs no fake alternatives: one option written plainly
+  is a valid `## Options` section.
 
 **Cross-platform work = one issue per area, linked.** Don't write one giant
 cross-cutting issue. Create a parent and one child per area, and wire real
