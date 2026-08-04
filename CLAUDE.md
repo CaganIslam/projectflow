@@ -17,10 +17,16 @@ and keep the living docs current.
    → on a go, hand the validated idea to `writing-plans` → then issues. Skip for
    well-understood or small work. (SKILL.md §1.0)
 1. Requirements → labeled issues (one per area, linked). Don't code from a vague ask.
+   Don't pre-decide issue-local implementation choices either - write them as
+   `## Options` (one-line trade-off each) in the issue; only cross-cutting calls
+   (shared contracts, patterns, dependencies) are settled upfront in BLUEPRINT.md
+   or an ADR. (SKILL.md §3)
 2. Show the backlog + priority; let the maintainer steer.
 3. Per issue: **propose → approve → implement** — one at a time. Present the issue in
    **plain language** (what it is, what it's for, what it does, what it changes —
-   purpose and effect first), **not a file dump**. The propose→approve→implement gate
+   purpose and effect first), **not a file dump**. If the issue lists `## Options`,
+   the proposal picks one and says why; approval locks it in, and the pick is
+   recorded on the issue. The propose→approve→implement gate
    is unchanged; the issue's `## Files` field stays as the written engineering spec.
 4. Verify: the agent runs everything runnable itself (tests, lint, build, CLI smoke) and
    reports the output; "manual steps" are **only** genuine human-hands/eyes checks (UI
