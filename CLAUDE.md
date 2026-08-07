@@ -35,9 +35,18 @@ and keep the living docs current.
 6. At each milestone close, offer a **bug hunt**.
 
 ## Configuration (set per project)
-- **areas:** `<frontend, backend, mobile, devops>`  ← edit to this project's layers
-- **test commands:** `<unit>` / `<contract>` / `<flow>`
-- **traceability:** `<req-id system, PRD, …>`
+- **areas:** `skill, prompts, docs, templates, scripts, repo`
+  - `skill` — SKILL.md and CLAUDE.md, the method itself
+  - `prompts` — the phase prompts under `docs/prompts/`
+  - `docs` — README, ADRs, and the other repo docs
+  - `templates` — what the bootstrap copies into consuming projects
+  - `scripts` — `scripts/bootstrap-repo.sh`
+  - `repo` — labels, milestones, CI, and repo configuration
+- **test commands:** none. This repo ships documents, not runnable code; changes are
+  verified by reading the affected files and by checking that a claim made in one
+  file is not contradicted in another.
+- **traceability:** milestone descriptions carry `Requirements covered:`; issues map
+  back to the pipeline phase they implement.
 - **working language:** English (default) — the language repo artifacts are written in.
 
 ## Conventions
