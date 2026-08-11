@@ -32,8 +32,19 @@ with a human in the loop.
 
 ## 0. Guardrails (always on)
 
-- **Propose before you do.** Explain the approach and wait for approval before
-  implementing an issue, opening a PR, or running anything destructive.
+- **Propose before you do** (always on, checked every turn). **No Edit, Write, or
+  branch on an issue's behalf until a proposal has been made and approved in an
+  earlier message.** That is the trigger - an observable action, not a feeling that
+  work has begun. See §1 step 3 for what a proposal contains.
+  **A written issue is never a proposal.** The issue is the spec; the proposal is a
+  message that presents it in plain language, names the approach, and then waits. A
+  well-specified issue makes this easy to forget, because reading one feels like the
+  proposing is already done. It isn't.
+- **No completion claim without evidence** (always on, checked every turn). "Done",
+  "fixed", "working", and "passing" are claims, and each needs the output that
+  supports it **in the same message**. **The trigger: before writing any of those
+  words.** If nothing in the project is runnable, verification is still required -
+  see §1 step 4 for what it means there.
 - **Approval before side effects.** Never open/close PRs or issues, push, or merge
   without an explicit go-ahead. Branch first if you're on the default branch.
 - **Destructive ops need a dry-run + confirmation** (deletes, `rm -rf`, DB
@@ -201,7 +212,10 @@ The per-issue loop (Phase 6's backlog feeds in as the *requirements*):
    issues, here's the order."* Let the user steer.
 3. **Propose → approve → implement (one issue at a time).** The gate is fixed and
    never skipped: **propose**, wait for explicit approval, and **only then
-   implement** — no code ahead of the go-ahead. The proposal has two parts:
+   implement** - no code ahead of the go-ahead. The trigger is in §0: no Edit,
+   Write, or branch on the issue's behalf until the proposal has been approved in
+   an earlier message. **The issue body doesn't count** - it's the spec, not the
+   proposal. The proposal has two parts:
    - **(a) Present the issue — plain language, never a file dump.** Lead with purpose
      and effect: **what** it is, **what it's for** (its value), **what it does** (the
      behaviour), and **what it changes** (the effect on the product/system — **not
@@ -227,6 +241,12 @@ The per-issue loop (Phase 6's backlog feeds in as the *requirements*):
      a physical device. Give those as explicit, numbered steps (what to open, what to do,
      what to expect). **If nothing needs human hands, there is no manual step** — the agent
      verifies everything and says so.
+   - **When nothing is runnable** - a docs, config, or content change, or a repo with
+     no suite at all - verification is still required and is not "read it back and
+     agree with yourself." Re-read what changed, check it against the files it claims
+     to be consistent with, and **say which files you checked and what you compared**.
+     Absence of a test suite is not absence of a check, and a rule that doesn't fit
+     gets skipped rather than translated unless the translation is written down.
    - it's done only when the automated checks pass **and** any genuine manual checks pass.
    `↳ deep skill: verification-before-completion` (no "done" without evidence) →
    `systematic-debugging` (if anything breaks).

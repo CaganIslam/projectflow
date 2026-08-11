@@ -11,6 +11,24 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-12 - Both gates given a trigger
+
+- Issues: #20, #21 · Milestone: Milestone 3: Working loop improvements
+- What changed: the propose gate and the verify gate are now always-on guardrails in
+  `SKILL.md` section 0, alongside the two rules that never get skipped, and each has
+  an observable trigger: no Edit, Write, or branch on an issue's behalf before an
+  approved proposal, and no "done" / "fixed" / "working" / "passing" without the
+  supporting output in the same message. Section 1 steps 3 and 4 point at those
+  triggers. `CLAUDE.md` mirrors both.
+- Notes for next time: two findings worth keeping. First, "a written issue is never a
+  proposal" had to be stated outright - our issues are detailed enough that reading
+  one feels like the proposing is done, a trap this repo built for itself. Second,
+  section 1 step 4 assumed a code repo, so in a docs repo the rule matched nothing
+  and got skipped rather than translated; it now says what verification means when
+  nothing is runnable.
+- Done in one change rather than two because both edits land on the same sections of
+  the same files, and two mechanisms for two gates would have been the worse outcome.
+
 ## 2026-08-12 - The pipeline is wired in, and Milestone 2 is done
 
 - Issue: #15 · Milestone: Milestone 2: Discovery pipeline
