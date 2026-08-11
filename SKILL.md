@@ -1,16 +1,18 @@
 ---
 name: projectflow
 description: >-
-  A disciplined, issue-driven GitHub workflow. Turn a feature's requirements into
-  labeled issues, work them one at a time (propose the approach, get approval,
-  implement, then verify with automated tests plus guided manual checks where human
-  judgment is needed), keep
-  living project docs (blueprint, architecture, progress, stack) up to date, hunt bugs in
-  a loop, and ship through milestones with PRs that close issues. Use when starting
-  a new project, validating whether a new idea is worth building (competitor / gap /
-  feasibility research before committing), planning a feature, breaking work into
-  issues or milestones,
-  running a bug hunt, opening or reviewing PRs, or setting up a repo's
+  A disciplined, issue-driven GitHub workflow, with a discovery pipeline in front of
+  it for new ideas. A raw idea goes through framing, exhaustive research, adversarial
+  validation with a go / no-go verdict, a product charter, a PRD, technical design,
+  and sprint planning before any issue is opened. From there: requirements become
+  labeled issues, worked one at a time (propose the approach, get approval, implement,
+  then verify with automated tests plus guided manual checks where human judgment is
+  needed), with living project docs (blueprint, architecture, progress, stack) kept up
+  to date, bug hunts in a loop, and milestones shipped through PRs that close issues.
+  Use when starting a new project, validating whether an idea is worth building at all
+  (research, competitor and gap analysis, red-team validation before committing),
+  writing a PRD or technical design, planning a feature, breaking work into issues or
+  milestones, running a bug hunt, opening or reviewing PRs, or setting up a repo's
   labels/templates/branch rules.
 ---
 
@@ -65,7 +67,7 @@ nothing here depends on them.
 
 | projectflow step | deep skill (if installed) | inline fallback |
 |---|---|---|
-| discovery / feasibility (§1.0) — new/greenfield | `brainstorming` + research fan-out (`dispatching-parallel-agents`, `deep-research`) → `writing-plans` on a go | research worth-doing / rivals / gap / evidence yourself; decide go/no-go; then plan |
+| discovery pipeline (§1.0) — new/greenfield | `brainstorming` (Phase 0's interview) + research fan-out (`dispatching-parallel-agents`, `deep-research`) for Phase 1's lanes and Phase 2's panels → `writing-plans` (Phase 6's backlog) | follow the phase prompts in `docs/prompts/`; run the lanes and panels yourself, one at a time |
 | requirements → issues (§1 step 1) | `brainstorming` | clarify goal + acceptance criteria with the user first |
 | propose the approach (§1 step 3) | `writing-plans` | write the approach as numbered steps before coding |
 | implement (§1 step 3) | `test-driven-development` | failing test first, then the code to pass it |
@@ -109,47 +111,62 @@ Action plan
 This is the default mode. **Do not jump straight to writing code** — and for a
 brand-new idea, don't jump straight to issues either: validate it first (§1.0).
 
-### 1.0 Phase 0 — Discovery & feasibility (new project / greenfield idea)
+### 1.0 The discovery pipeline (new project / greenfield idea)
 
-**For a brand-new project — or a greenfield feature whose problem space isn't already
-understood — run a discovery pass *before* the loop. Don't turn an unvalidated idea
-into issues.** Skip it for well-understood work (a bugfix, a small change on an existing
-system, anything where "should we / what already exists" is already answered) — go
-straight to §1 step 1.
+**When the maintainer opens with a new idea or a greenfield project, announce the
+pipeline and start Phase 0. Don't wait to be asked, and don't turn an unvalidated
+idea into issues.** Full detail in [`docs/DISCOVERY-PIPELINE.md`](docs/DISCOVERY-PIPELINE.md);
+the prompt for each phase is in `docs/prompts/`.
 
-Discovery is real research (web + primary sources, one fan-out per angle), not a guess:
+**Skip it** for a bugfix, a small change on an existing system, or anything where
+"should we, and what already exists" is already answered — go straight to §1 step 1.
+The pipeline is expensive and exists for a commitment decision, not for every piece
+of work. If the maintainer says the space is already understood, that's a valid skip.
+**Say when you're skipping and why.** A skipped phase and a forgotten one must not
+look the same.
 
-- **Worth doing?** — is the problem real, who feels it, does the idea hold up.
-- **Competitors / prior art** — who already does this or something adjacent, what they
-  do, why it's good or bad, their strengths and gaps.
-- **White space** — a genuine gap / unmet need / problem to own, or is the lane full.
-- **How we'd build it** — what to make, what to add, which approaches/structures fit.
-- **Evidence** — academic papers and serious blog posts on the problem and the
-  approach, not just vendor pages.
+Eleven stages. The first seven have prompts here; the last four are this file's own
+sections, named so the whole arc is visible:
 
-Write the findings as durable research docs (`docs/research/`), verify the high-stakes
-claims (numbers, competitor status, dates), and close with an explicit **decision —
-go / cautious-go / no-go — recorded in `BLUEPRINT.md`.** Honest, cheap research before
-any build commitment: a no-go here costs days, not months, and is a win.
+| # | Phase | Produces | Gate: the maintainer approves |
+|---|---|---|---|
+| 0 | Idea & Problem Framing | the framed problem, and **kill criteria written before any evidence** | that this is the problem, framed correctly |
+| 1 | Exhaustive Research | the research report + a claim ledger + an opportunity map | that the research is complete enough to be attacked |
+| 2 | Concept Validation / Red Team | verified claims, ranked attacks, and a **go / cautious-go / no-go** | the verdict, and on a cautious-go its conditions |
+| 3 | Product Charter | the invariants (a game calls this its design bible) | what must remain true about the product |
+| 4 | PRD | every screen and feature, with states and acceptance criteria | what will be built and what will not |
+| 5 | Technical Design | cross-cutting decisions only, plus what's **left open on purpose** | the shape of the system, and what was deferred |
+| 6 | Sprint Planning | the drafted backlog: issues, milestones, dependencies | the plan and the order of work |
+| 7 | Development | → §1, the issue loop |  |
+| 8 | User Testing | → §6 QA track + §5 bug hunt |  |
+| 9 | Iterate | → back to 7, with a **written exit condition** |  |
+| 10 | Launch | → §8, deploy gating |  |
 
-**Then trigger the plan.** On a go (or cautious-go), hand the validated direction to
-`writing-plans` — the discovery output *is* the spec that skill triggers on — and the
-plan it produces becomes the requirements + issues of the loop. The front of a new
-project reads **discover → decide → plan → issues**, never straight-to-issues.
+Four rules that make it work, and that a phase prompt alone won't tell you:
 
-`↳ deep skill: brainstorming` (frame the idea + the questions) → research fan-out
-(`dispatching-parallel-agents`, or `deep-research` if installed; else run the web
-research yourself, one angle at a time) → `writing-plans` (turn the go decision into a
-plan).
+- **Every phase ends at a gate.** The artifact is written, the maintainer reads it,
+  the next phase starts on their word. Nothing flows on automatically.
+- **Phase 1 asks short or deep** before researching. Ask; don't infer it from how
+  exciting the idea sounds. Later phases inherit the answer (ADR 0004).
+- **Phase 2 can end the pipeline**, and a no-go there is a good outcome: it costs
+  days instead of months. The verdict is decided against Phase 0's kill criteria,
+  not against how heavy the pile of criticism feels.
+- **Phase 5 must leave decisions open.** Issue-local calls become `## Options` in
+  Phase 6's issues and are decided at propose time (ADR 0003). A technical design
+  that decides everything makes the approval gate a formality.
+
+`↳ deep skill: brainstorming` (Phase 0's interview) → research fan-out
+(`dispatching-parallel-agents`, or `deep-research` if installed) for Phase 1's lanes
+and Phase 2's panels → `writing-plans` (Phase 6's backlog).
 
 ---
 
-The per-issue loop (Phase 0's go-decision + plan feed in as the *requirements*):
+The per-issue loop (Phase 6's backlog feeds in as the *requirements*):
 
 ```
-  new/greenfield idea ──▶ Phase 0: discovery + feasibility ──▶ go/no-go ──▶ writing-plans
-       (skip for small work on an existing system)                              │
-                                                                                ▼
+  new/greenfield idea ──▶ discovery pipeline, phases 0-6 (§1.0) ──▶ backlog
+       (skip for small work on an existing system)                       │
+                                                                         ▼
   requirements ──▶ issues (labeled + milestoned)
                       │
                       ▼
@@ -421,10 +438,11 @@ gh pr create --base main --title "feat(<area>): <subject>" \
 
 ## 9. End-to-end (the short version)
 
-0. **New project / greenfield?** Run **Phase 0 — discovery + feasibility** first
-   (worth-doing / competitors / white-space / academic + blog evidence), record a
-   **go / cautious-go / no-go** in `BLUEPRINT.md`, and on a go hand the validated idea
-   to `writing-plans` before any issues (§1.0). Skip to step 1 for well-understood work.
+0. **New project / greenfield?** Announce the **discovery pipeline** and start Phase
+   0 — framing, research, red-team validation with a **go / cautious-go / no-go** in
+   `BLUEPRINT.md`, then charter, PRD, technical design, and sprint planning, each
+   behind its own approval gate (§1.0). Skip to step 1 for well-understood work, and
+   say out loud that you're skipping and why.
 1. Requirements → labeled issues (one per area, linked).
 2. Show backlog + priority; user steers.
 3. Per issue: **propose → approve → implement** — the proposal **leads in plain
@@ -473,6 +491,8 @@ templates/.github/
   ISSUE_TEMPLATE/{feature,bug,testing}.yml   structured issue forms (3-axis labels)
   PULL_REQUEST_TEMPLATE.md                   Summary + Closes #N + DoD checklist
   rulesets/main.json                         branch protection (approval + checks)
+docs/DISCOVERY-PIPELINE.md     the eleven stages, the gates, the cross-phase contracts
+docs/prompts/                  one agent prompt per phase (0-6), plus their shared contract
 docs/adr/                      architecture decision records (the "why")
 docs/{BLUEPRINT,ARCHITECTURE,PROGRESS,STACK}.md  seeded by the bootstrap (the living docs)
 ```

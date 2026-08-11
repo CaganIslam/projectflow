@@ -17,13 +17,30 @@ never lost.**
 > experience — see [Install](#install). Without them, projectflow falls back to its own
 > built-in guidance, so nothing breaks.
 
-## The loop
+## The discovery pipeline
 
-New project? A **Phase 0 discovery pass** (worth-doing / competitors / gap / evidence
-→ go/no-go → `writing-plans`) runs first; the per-issue loop then takes over:
+New project? Seven phases run before a single issue is opened, each behind its own
+approval gate. Full detail in [`docs/DISCOVERY-PIPELINE.md`](docs/DISCOVERY-PIPELINE.md);
+the agent prompt for each phase is in [`docs/prompts/`](docs/prompts/).
 
 ```
-  new / greenfield idea ──▶ Phase 0: discovery + feasibility ──▶ go/no-go ──▶ writing-plans
+0  Idea & Problem Framing         kill criteria, written before any evidence exists
+1  Exhaustive Research            parallel lanes, short or deep, every claim tiered
+2  Concept Validation / Red Team  verify the claims, then attack the idea
+                                  -> GO / CAUTIOUS-GO / NO-GO
+3  Product Charter                the invariants  (a game calls this its design bible)
+4  PRD                            every screen and feature, with acceptance criteria
+5  Technical Design               cross-cutting decisions, and what is left open
+6  Sprint Planning                the backlog -> the loop below takes over
+```
+
+Skipped for a bugfix or a small change on an understood system, and the agent says
+when it is skipping. A no-go at Phase 2 is a good outcome: it costs days, not months.
+
+## The loop
+
+```
+  new / greenfield idea ──▶ discovery pipeline (phases 0-6)
                       │        (skip for small work on an existing system)
                       ▼
   requirements ──▶ issues (labeled + milestoned)
