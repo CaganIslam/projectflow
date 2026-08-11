@@ -63,34 +63,13 @@ Ordered by dependency. No dates: order and blocking relationships only.
 
 ## The discovery pipeline
 
-Eleven stages. The first seven are defined by prompts in this repo; the last four
-are pointers into `SKILL.md`, because the issue loop already describes them and two
-descriptions of one loop drift apart.
+Eleven stages carrying an idea from framing to a backlog and then through
+building it. The first seven have prompts in `docs/prompts/`; the last four are
+the issue loop `SKILL.md` already describes.
 
-```
-0  Idea & Problem Framing         prompt   kill criteria registered here
-1  Exhaustive Research            prompt   short/deep switch, claim ledger
-                                           + opportunity and white-space map
-2  Concept Validation / Red Team  prompt   verification loop, then attack
-                                           -> GO / CAUTIOUS-GO / NO-GO
-3  Product Charter                prompt   the invariants  (games: Design Bible)
-4  PRD                            prompt   requirements, scope, metrics
-5  Technical Design               prompt   cross-cutting decisions only
-6  Sprint Planning                prompt   -> issues are created here
---------------------------- handoff ---------------------------
-7  Development     -> SKILL.md section 1, the issue loop
-8  User Testing    -> SKILL.md section 6 QA + section 5 bug hunt
-9  Iterate         -> back to 7, with a defined exit condition
-10 Launch          -> SKILL.md section 8, deploy gating
-```
-
-Four contracts run between non-adjacent phases. None is visible from the order
-alone, and breaking one degrades the pipeline silently rather than loudly:
-
-- Phase 0's kill criteria are what Phase 2's verdict is decided against.
-- Phase 1's claim ledger is what Phase 2's verification loop consumes.
-- Phase 3's charter is what Phase 4 references and must not restate.
-- Phase 5's module boundaries are what Phase 6 splits issues along.
+The stage list, the gates, and the four contracts that run between non-adjacent
+phases are in **`docs/DISCOVERY-PIPELINE.md`**, which owns them. They are not
+repeated here.
 
 ## Open decisions
 

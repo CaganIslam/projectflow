@@ -5,9 +5,8 @@ fixes what they all have in common, so that they can be written one at a time
 without drifting into seven different shapes.
 
 Read this before writing or changing any phase prompt. This file is only about
-the prompts; the pipeline as a whole will be described in
-`docs/DISCOVERY-PIPELINE.md`, which does not exist yet. Until it does, the phase
-order and the contracts between phases are in `BLUEPRINT.md`.
+the prompts; the pipeline as a whole, including the phase order, the gates, and
+the contracts between phases, is in `docs/DISCOVERY-PIPELINE.md`.
 
 ## Why a contract at all
 
