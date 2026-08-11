@@ -11,6 +11,22 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-12 - The pipeline is wired in, and Milestone 2 is done
+
+- Issue: #15 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `SKILL.md` section 1.0 replaced with the pipeline trigger, an
+  eleven-stage table naming what each phase produces and what its gate approves,
+  and four rules a phase prompt alone would not convey. Section 0.5's discovery row,
+  section 9's step 0, the loop diagram, and the repo contents list updated to match.
+  `CLAUDE.md` step 0 and its deep-skill table, and `README.md`, updated too. The
+  skill frontmatter description now mentions the pipeline, which is what decides
+  whether the skill is invoked at all.
+- Notes for next time: the repo now has one Phase 0, the pipeline's. The old section
+  1.0 was a single discovery block that used the same name for different work, and
+  leaving both would have meant two answers to "what is Phase 0" inside one file.
+- Milestone 2 is complete: seven prompts, the contract, the pipeline document, and
+  the wiring. Milestone 3 remains: #17, #18, #20, #21, #22.
+
 ## 2026-08-12 - The pipeline document
 
 - Issue: #14 · Milestone: Milestone 2: Discovery pipeline

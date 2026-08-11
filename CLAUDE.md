@@ -12,10 +12,14 @@ and keep the living docs current.
   data-residency map; consult before adding a dependency or sending data off-box.
 
 ## How we work
-0. **New project / greenfield?** Discovery + feasibility research first (worth-doing /
-   competitors / gap / academic + blog) → **go / cautious-go / no-go** in `BLUEPRINT.md`
-   → on a go, hand the validated idea to `writing-plans` → then issues. Skip for
-   well-understood or small work. (SKILL.md §1.0)
+0. **New project / greenfield?** Announce the **discovery pipeline** and start Phase 0
+   rather than waiting to be asked. Seven phases, each behind an approval gate: framing
+   (with kill criteria written before any evidence), research, red-team validation with
+   a **go / cautious-go / no-go** in `BLUEPRINT.md`, charter, PRD, technical design,
+   sprint planning → then issues. Phase 1 asks whether research should be short or deep;
+   ask, don't infer. Skip the pipeline for well-understood or small work, and **say that
+   you're skipping and why**. (SKILL.md §1.0; detail in `docs/DISCOVERY-PIPELINE.md`,
+   phase prompts in `docs/prompts/`)
 1. Requirements → labeled issues (one per area, linked). Don't code from a vague ask.
    Don't pre-decide issue-local implementation choices either - write them as
    `## Options` (one-line trade-off each) in the issue; only cross-cutting calls
@@ -75,7 +79,7 @@ and keep the living docs current.
 
   | Step | Deep skill(s) if installed |
   | --- | --- |
-  | discovery / feasibility (new project) | `brainstorming` · `deep-research` · `writing-plans` |
+  | discovery pipeline (new project) | `brainstorming` · `dispatching-parallel-agents` · `deep-research` · `writing-plans` |
   | requirements → issues | `brainstorming` |
   | propose the approach / plan | `writing-plans` |
   | implement | `test-driven-development` · `using-git-worktrees` |
