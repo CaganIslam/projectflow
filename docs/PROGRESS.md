@@ -25,6 +25,24 @@
   looks, because the issue loop then has nothing left to weigh and the propose
   gate becomes transcription.
 
+## 2026-08-11 - Phase 6 sprint planning prompt, and the seven prompts are complete
+
+- Issue: #13 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-6-sprint-planning.md`, the last of the seven.
+  Uses SKILL.md's existing issue and milestone format rather than a parallel one.
+  Deferred decisions arrive as `## Options` and are not collapsed into a
+  recommendation. The split follows Phase 5's module boundaries. A coverage check
+  maps every PRD screen and feature to an issue and reports anything uncovered.
+  Nothing is created until the maintainer approves the drafted set, and priorities
+  are proposed rather than assigned.
+- Notes for next time: this is where the pipeline either pays off or leaks. The
+  coverage check is the reason the PRD was made to enumerate exhaustively, and
+  without it a dropped feature looks like a decision nobody made. The phase also
+  states its own end explicitly, because a pipeline that trails off leaves the
+  agent guessing whether more planning is wanted.
+- Still open in Milestone 2: `DISCOVERY-PIPELINE.md` (#14) and the skill wiring
+  (#15). Until #15 lands, none of this triggers on its own.
+
 ## 2026-08-11 - Phase 4 PRD prompt
 
 - Issue: #11 · Milestone: Milestone 2: Discovery pipeline
