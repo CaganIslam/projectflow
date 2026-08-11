@@ -11,6 +11,20 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase 5 technical design prompt
+
+- Issue: #12 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-5-technical-design.md`. Cross-cutting
+  decisions only, with the deferred-decision list as a required section of
+  `ARCHITECTURE.md` rather than a separate file. ADRs written now rather than
+  listed for later. Inapplicable sections get one line of reason instead of
+  filler, with five sections that can never be skipped. Testing attaches to the
+  contract and flow layers SKILL.md section 6 already defines.
+- Notes for next time: the phase's real output is what it refuses to decide. A
+  design with an empty deferred-decision section has failed, however complete it
+  looks, because the issue loop then has nothing left to weigh and the propose
+  gate becomes transcription.
+
 ## 2026-08-11 - Phase 4 PRD prompt
 
 - Issue: #11 · Milestone: Milestone 2: Discovery pipeline
