@@ -11,6 +11,21 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase prompts have a contract
+
+- Issue: #7 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/README.md` fixes the six-section skeleton every phase
+  prompt follows, the file and artifact paths, and the rules that apply to all
+  seven. `_skeleton.md` is the copy-ready template. ADR 0004 records the three
+  cross-cutting decisions: the agent triggers the pipeline, Phase 1 asks the
+  maintainer for depth, and the prompts stay in this repo rather than in
+  `templates/`.
+- Notes for next time: the prohibition list is the section that carries the
+  pipeline, and the rule worth remembering while writing each prompt is that the
+  violated prohibition is always the adjacent one. A research phase never writes a
+  PRD by accident; it slides into recommending features. Write the near miss, not
+  the distant one.
+
 ## 2026-08-07 - Repo follows its own method
 
 - Issue: #6 · Milestone: Milestone 1: Repo self-bootstrap

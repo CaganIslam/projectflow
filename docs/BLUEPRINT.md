@@ -97,12 +97,13 @@ alone, and breaking one degrades the pipeline silently rather than loudly:
 > Issue-local decisions live as `## Options` in their issue and are picked at propose
 > time. Cross-cutting ones are decided here or in an ADR before dependent issues start.
 
-- Prompt file skeleton and folder layout - cross-cutting, decided in #7 before any
-  phase prompt is written.
+- ~~Prompt file skeleton and folder layout~~ - decided in #7, see
+  `docs/prompts/README.md`.
+- ~~Whether the pipeline warrants an ADR~~ - decided in #7, see ADR 0004:
+  agent-triggered, depth-switched at Phase 1, prompts stay in this repo.
 - Claim ledger format - a contract between #8 and #10; whichever is implemented
-  first fixes it.
-- Whether the pipeline warrants an ADR (agent-triggered phases, depth switch,
-  prompts stay in this repo) - decided while doing #7.
+  first fixes it. Its path is listed in the prompt contract but the format is not.
+- Where the PRD artifact lives (its own file, or `BLUEPRINT.md`) - decided in #11.
 
 ## Open questions
 

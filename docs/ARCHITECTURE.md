@@ -39,6 +39,7 @@ place, and everything else references it.
 | The working loop, gates, guardrails | `SKILL.md` | references it, never restates it |
 | Per-project memory for consuming repos | `CLAUDE.md` | mirrors SKILL.md's guardrails in short form, kept in sync deliberately |
 | Discovery pipeline orchestration | `docs/DISCOVERY-PIPELINE.md` | phase prompts reference it |
+| The shape every phase prompt shares | `docs/prompts/README.md` | each prompt fills the skeleton, does not redefine it |
 | A single phase's instructions | its file in `docs/prompts/` | the pipeline doc summarises, does not duplicate |
 | Why a structural decision was made | `docs/adr/` | other docs link to the ADR |
 | What has been done | `docs/PROGRESS.md` | nothing else keeps history |
