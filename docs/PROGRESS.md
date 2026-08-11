@@ -11,6 +11,23 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase 2 validation and red team prompt
+
+- Issue: #10 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-2-concept-validation.md`. Three ordered passes:
+  adversarial verification down the claim ledger, then isolated red team panels
+  with a two-way devil's advocate, then a verdict decided against the Phase 0 kill
+  criteria. Quarantined claims stay in the report stamped rather than being
+  deleted. A maintainer override is argued against and offered alternatives first,
+  then recorded with its reason.
+- Notes for next time: the design problem here is that nine panels told to prove
+  failure always produce a long list, so a verdict read off the weight of that list
+  kills everything. Fixing it is what the pre-registered kill criteria are for, and
+  it is why Phase 0's most important output is a set of criteria written before any
+  evidence exists. The other trap is the exit condition of the verification loop:
+  "no source errors" cannot terminate, because some claims are permanently
+  unverifiable and unverifiable is not wrong.
+
 ## 2026-08-11 - Phase 0 framing prompt
 
 - Issue: #9 · Milestone: Milestone 2: Discovery pipeline
