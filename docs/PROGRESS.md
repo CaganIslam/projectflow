@@ -11,6 +11,21 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase 3 product charter prompt
+
+- Issue: #16 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-3-product-charter.md`. Three to five pillars,
+  each with a violation clause and a stated basis. Quality goals must name what
+  they beat and what beats them. Anti-goals written last so they derive from the
+  pillars. Amendments go through an ADR. Its own file at `docs/CHARTER.md`, and
+  the phase is skippable for projects with no identity to protect, provided the
+  skip is stated.
+- Notes for next time: the admission test is what keeps this from becoming a
+  second PRD - every section has to answer "what does this forbid", and a section
+  that rules nothing out gets deleted. The pillar count matters more than it
+  looks: with ten pillars, any proposal that conflicts with one can be defended by
+  appealing to another.
+
 ## 2026-08-11 - Phase 2 validation and red team prompt
 
 - Issue: #10 · Milestone: Milestone 2: Discovery pipeline
