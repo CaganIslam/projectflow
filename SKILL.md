@@ -45,6 +45,16 @@ with a human in the loop.
   supports it **in the same message**. **The trigger: before writing any of those
   words.** If nothing in the project is runnable, verification is still required -
   see §1 step 4 for what it means there.
+- **Stay inside the issue.** Touch only the files the issue needs. No drive-by
+  tidying, reformatting, or improving of code you happened to read. If a change
+  outside the issue is genuinely necessary, **say so in the proposal** rather than
+  slipping it in; if it's worth doing but not necessary, it's a new issue. An
+  out-of-scope edit makes the diff stop matching the issue, and a regression can
+  arrive from a file nobody meant to change.
+- **Leave the build green.** Not only at the end. Verification before "done" is §1
+  step 4, but the project stays working *throughout*: a long implementation that
+  sits broken across many steps makes the eventual failure hard to attribute to the
+  step that caused it.
 - **Approval before side effects.** Never open/close PRs or issues, push, or merge
   without an explicit go-ahead. Branch first if you're on the default branch.
 - **Destructive ops need a dry-run + confirmation** (deletes, `rm -rf`, DB

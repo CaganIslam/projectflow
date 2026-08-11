@@ -11,6 +11,22 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-12 - The two missing agent working rules
+
+- Issue: #17 · Milestone: Milestone 3: Working loop improvements
+- What changed: two guardrails added to `SKILL.md` section 0 and mirrored in
+  `CLAUDE.md`. Stay inside the issue: only the files the issue needs, a necessary
+  out-of-scope change named in the proposal rather than slipped in, a worthwhile but
+  unnecessary one becoming its own issue. Leave the build green throughout the work,
+  not only at the end.
+- Notes for next time: most of what people put in an "AI coding rules" document was
+  already here - one concern per commit in section 7, tests and verification in
+  sections 1 and 6, follow-the-architecture in section 2, decisions as ADRs. Only
+  these two were genuinely missing, which is why no new document was created. The
+  build rule went to section 0 rather than into the verification step, because that
+  step is reached at the end of an issue and the rule is about staying green
+  throughout.
+
 ## 2026-08-12 - Both gates given a trigger
 
 - Issues: #20, #21 · Milestone: Milestone 3: Working loop improvements
