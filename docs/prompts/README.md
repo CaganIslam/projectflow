@@ -4,8 +4,10 @@ The discovery pipeline is seven agent-facing prompts, one per phase. This file
 fixes what they all have in common, so that they can be written one at a time
 without drifting into seven different shapes.
 
-Read this before writing or changing any phase prompt. The pipeline as a whole is
-described in `docs/DISCOVERY-PIPELINE.md`; this file is only about the prompts.
+Read this before writing or changing any phase prompt. This file is only about
+the prompts; the pipeline as a whole will be described in
+`docs/DISCOVERY-PIPELINE.md`, which does not exist yet. Until it does, the phase
+order and the contracts between phases are in `BLUEPRINT.md`.
 
 ## Why a contract at all
 
@@ -136,9 +138,8 @@ Where each phase writes, in the project being built (not in this repo):
 The claim ledger's own path and format are a contract between phases 1 and 2;
 whichever is written first fixes them, and the other follows.
 
-These prompts stay in this repo. They are not copied into `templates/`, because
-they are the method the maintainer invokes through the installed skill, not
-scaffolding a new project needs a copy of.
+These prompts stay in this repo and are not copied into `templates/`. The
+reasoning, and what it costs, is in ADR 0004.
 
 ## Writing a new phase prompt
 
