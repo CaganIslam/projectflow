@@ -101,8 +101,9 @@ alone, and breaking one degrades the pipeline silently rather than loudly:
   `docs/prompts/README.md`.
 - ~~Whether the pipeline warrants an ADR~~ - decided in #7, see ADR 0004:
   agent-triggered, depth-switched at Phase 1, prompts stay in this repo.
-- Claim ledger format - a contract between #8 and #10; whichever is implemented
-  first fixes it. Its path is listed in the prompt contract but the format is not.
+- ~~Claim ledger format~~ - fixed by #8, since it was written first:
+  `docs/research/01-claims.md`, columns id / claim / tier / label / source /
+  where. Recorded in the prompt contract; #10 reads that shape.
 - Where the PRD artifact lives (its own file, or `BLUEPRINT.md`) - decided in #11.
 
 ## Open questions

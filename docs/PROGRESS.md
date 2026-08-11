@@ -11,6 +11,20 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase 1 research prompt
+
+- Issue: #8 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-1-exhaustive-research.md`. Depth switch asked
+  of the maintainer, eight fixed lanes plus two to four domain lanes the agent
+  proposes and the maintainer confirms, lanes isolated until all finish,
+  competitor lane fanned out by segment, every claim labelled and tiered at write
+  time, and an opportunity map that describes gaps without proposing what fills
+  them. The claim ledger format was fixed here since this phase was written first.
+- Notes for next time: the prohibition worth writing carefully is the adjacent
+  one. This phase does not accidentally write a PRD; it slides into recommending
+  features, and into leaning toward a verdict Phase 2 is supposed to reach. Both
+  are listed first in the prohibition list for that reason.
+
 ## 2026-08-11 - Phase prompts have a contract
 
 - Issue: #7 · Milestone: Milestone 2: Discovery pipeline

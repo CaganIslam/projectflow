@@ -128,15 +128,16 @@ Where each phase writes, in the project being built (not in this repo):
 | Phase | Artifact |
 |---|---|
 | 0 | `docs/research/00-problem.md` |
-| 1 | `docs/research/01-research.md`, plus the claim ledger |
+| 1 | `docs/research/01-research.md` and `docs/research/01-claims.md` |
 | 2 | `docs/research/02-validation.md`; the verdict into `BLUEPRINT.md` |
 | 3 | `docs/CHARTER.md` |
 | 4 | decided in the PRD issue: its own artifact, or `BLUEPRINT.md` |
 | 5 | `ARCHITECTURE.md`, `STACK.md`, `docs/adr/` |
 | 6 | GitHub issues and milestones |
 
-The claim ledger's own path and format are a contract between phases 1 and 2;
-whichever is written first fixes them, and the other follows.
+The claim ledger is a contract between phases 1 and 2. Phase 1 was written first
+and fixed it: `docs/research/01-claims.md`, a table with the columns id, claim,
+tier, label, source, where. Phase 2 reads that shape rather than redefining it.
 
 These prompts stay in this repo and are not copied into `templates/`. The
 reasoning, and what it costs, is in ADR 0004.
