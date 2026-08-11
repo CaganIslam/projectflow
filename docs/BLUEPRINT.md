@@ -104,7 +104,8 @@ alone, and breaking one degrades the pipeline silently rather than loudly:
 - ~~Claim ledger format~~ - fixed by #8, since it was written first:
   `docs/research/01-claims.md`, columns id / claim / tier / label / source /
   where. Recorded in the prompt contract; #10 reads that shape.
-- Where the PRD artifact lives (its own file, or `BLUEPRINT.md`) - decided in #11.
+- ~~Where the PRD artifact lives~~ - decided in #11: `docs/PRD.md`, with a summary
+  and a link in `BLUEPRINT.md` so the plan of record stays readable.
 
 ## Open questions
 

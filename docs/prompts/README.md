@@ -131,7 +131,7 @@ Where each phase writes, in the project being built (not in this repo):
 | 1 | `docs/research/01-research.md` and `docs/research/01-claims.md` |
 | 2 | `docs/research/02-validation.md`; the verdict into `BLUEPRINT.md` |
 | 3 | `docs/CHARTER.md` |
-| 4 | decided in the PRD issue: its own artifact, or `BLUEPRINT.md` |
+| 4 | `docs/PRD.md`; `BLUEPRINT.md` carries a summary and a link |
 | 5 | `ARCHITECTURE.md`, `STACK.md`, `docs/adr/` |
 | 6 | GitHub issues and milestones |
 

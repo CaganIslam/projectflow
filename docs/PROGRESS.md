@@ -11,6 +11,20 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase 4 PRD prompt
+
+- Issue: #11 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-4-prd.md`. Every screen and every feature
+  enumerated with states and acceptance criteria, traceability written inline on
+  each requirement, charter conflicts raised rather than resolved, and the
+  what/why versus how boundary written out with its reasoning. Its own file at
+  `docs/PRD.md`. The contract table and `BLUEPRINT.md` were updated, since the PRD
+  path had been left open for this issue to decide.
+- Notes for next time: the word "major" was deliberately banned from the
+  enumeration rule. It reads as reasonable and it is the mechanism by which a
+  feature quietly never gets built: skipped here, never an issue in Phase 6, and
+  nobody notices a decision was made.
+
 ## 2026-08-11 - Phase 3 product charter prompt
 
 - Issue: #16 · Milestone: Milestone 2: Discovery pipeline
