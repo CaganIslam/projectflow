@@ -11,6 +11,20 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-11 - Phase 0 framing prompt
+
+- Issue: #9 · Milestone: Milestone 2: Discovery pipeline
+- What changed: `docs/prompts/phase-0-idea-and-problem-framing.md`. Questions asked
+  in topic batches rather than one at a time or as a single form, and a batch is
+  not left until it is understood. Three batches: the problem, what is being
+  assumed, and constraints plus kill criteria.
+- Notes for next time: the line that took the most care is what this phase may
+  challenge. It questions internal inconsistency ("these two answers cannot both
+  be true") and not merit ("this space looks crowded"), because the second needs
+  evidence that does not exist yet. The test written into the prompt: a challenge
+  the maintainer can settle by thinking belongs here, one that needs a source
+  belongs to Phases 1 and 2.
+
 ## 2026-08-11 - Phase 1 research prompt
 
 - Issue: #8 · Milestone: Milestone 2: Discovery pipeline
