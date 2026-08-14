@@ -359,6 +359,50 @@ an issue that's still blocked.
 
 `↳ deep skill: dispatching-parallel-agents` — when several unblocked issues are
 genuinely independent (no shared state), work them in parallel instead of serially.
+How to split the work is §3.5.
+
+---
+
+## 3.5 Agent organization
+
+Two different things get called "use more agents", and only one of them buys
+quality.
+
+**Parallelism** is several agents doing the same kind of work on different items.
+It buys wall-clock and risks merge conflicts and shared-state corruption. §3 and
+`using-git-worktrees` already cover it; a discovery pipeline's Phase 5 draws the
+boundaries it needs (see §1.0).
+
+**Role separation** is agents doing different kinds of work on the same item,
+especially adversarial ones. This is where the quality comes from, and the reason
+is specific: **an agent cannot audit its own output**, because the blind spot that
+produced the error is still in place when it checks. Re-reading your own work and
+agreeing with it is not verification.
+
+Three rules:
+
+- **Anything whose job is to catch errors in a previous step is done by a fresh
+  agent that did not produce that work.** One sentence covering verification, red
+  team, code review, QA, and the bug hunt. It is why `requesting-code-review`
+  exists, why the pipeline's Phase 2 verifiers never wrote the research, and why
+  GitHub forbids self-approval.
+- **Parallel agents need a different angle or an adversarial stance.** Five runs
+  of the same model on the same prompt agreeing is not independent confirmation;
+  it is one opinion bought five times. Where agreement is the signal being read,
+  give each agent a distinct lens, or tell them to refute rather than to check.
+- **Hand off through written artifacts.** A fresh agent knows only what is written
+  down. This works here because the living docs and issue bodies already carry the
+  state - which is also why the practice collapses in a repo without them.
+
+**When not to split.** N agents cost N times as much, and most issues do not earn
+it. Split when the work is genuinely independent, or when the step is a check on
+earlier work. Do not split to look thorough.
+
+Example, without inventing a framework: one agent implements an issue; a second,
+which has not seen the reasoning, reviews the diff against the issue's acceptance
+criteria. Not "an implementer agent and a reviewer agent" as fixed roles - the
+same agent can do both jobs on different issues. What matters is that it is never
+both on the *same* issue.
 
 ---
 
