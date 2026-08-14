@@ -11,6 +11,20 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-14 - Agent organization for the development stage
+
+- Issue: #18 · Milestone: Milestone 3: Working loop improvements
+- What changed: new `SKILL.md` section 3.5, with the core rule mirrored in
+  `CLAUDE.md`. Separates parallelism (same work, different items, buys time) from
+  role separation (different work, same item, buys quality), states that an agent
+  cannot audit its own output, requires parallel agents to carry a different lens or
+  an adversarial stance, requires handoff through written artifacts, and says when
+  not to split.
+- Notes for next time: roles are deliberately not named. A fixed set (implementer,
+  reviewer, verifier) starts to look like a framework and does not fit every project;
+  the same agent can do both jobs on different issues, and what matters is that it is
+  never both on the same issue. The example in the section says exactly that.
+
 ## 2026-08-12 - The two missing agent working rules
 
 - Issue: #17 · Milestone: Milestone 3: Working loop improvements
