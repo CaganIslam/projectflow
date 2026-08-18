@@ -78,6 +78,13 @@ tiered as it is written, so verification spends its effort where a wrong answer
 would change the decision. Without the ledger, Phase 2 would have to classify
 several hundred sentences itself and would silently skip whatever it misread.
 
+Every claim also records **where it came from**, on the same write-time principle:
+whether an agent produced it, a document states it, or somebody was observed doing
+something. Phase 2 reads that to tell an invented sentence apart from a genuinely
+unverifiable one, and to cap a verdict resting on nothing anyone acted on. The
+column is set once, at writing, because provenance cannot be recovered from a
+finished page.
+
 **Phase 3's charter is referenced by Phase 4, never restated.** Vision, pillars,
 and permanent non-goals live in the charter. The PRD owns requirements, scope,
 and metrics. Duplication guarantees drift.

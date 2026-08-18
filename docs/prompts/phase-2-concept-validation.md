@@ -16,7 +16,8 @@ never attacked.
 
 - `docs/research/01-research.md` - the Phase 1 report
 - `docs/research/01-claims.md` - the claim ledger: id, claim, tier, label,
-  source, where
+  provenance, source, where. The provenance values and what they mean are in
+  `docs/prompts/README.md`.
 - `docs/research/00-problem.md` - the Phase 0 framing, and specifically the
   **kill criteria** registered there before any evidence existed. The verdict is
   decided against them.
@@ -58,6 +59,24 @@ Work down the claim ledger. Effort follows the tier:
 | supporting | does the cited source exist and does it say this? |
 | colour | no check. Carried with its label. |
 
+**A `generated` claim is not an unverified one.** Unverified means a source was
+sought and nothing settled it. Generated means nobody ever observed the thing:
+there is no source to fail to find. Treating the two the same lets an agent's own
+output sit in the report stamped as merely hard to confirm.
+
+So a `generated` row is worked differently. The verifier looks for real support
+for what it asserts, and one of two things happens:
+
+- support is found, the claim is rewritten to say what the source says, and the
+  provenance moves up the ladder to whatever the support actually is;
+- nothing is found, and the row stays `generated`, stamped *agent-produced - not
+  a basis for decisions*, in the same section as the quarantined claims and
+  distinguished from them by its stamp.
+
+A `generated` row is never promoted for being plausible, for surviving an attack,
+or for agreeing with the rest of the report. Nothing about it changes except by
+finding something real.
+
 **Repair is surgical.** A wrong figure is corrected in place and its confidence
 updated. The report is not regenerated. Regeneration discards everything that was
 correct and re-rolls fresh errors, and it costs more than the fix.
@@ -80,8 +99,9 @@ construction, which is why the brakes above do not include it.
 established is itself information, and a report that quietly drops it reads as
 though the question was never asked.
 
-Pass 1 ends with the ledger updated: every row verified, corrected, or
-quarantined, with the count of each stated plainly.
+Pass 1 ends with the ledger updated: every row verified, corrected, quarantined,
+or left `generated`, with the count of each stated plainly, and with the
+decision-flipping rows counted separately by provenance.
 
 ### Pass 2 - red team the concept
 
@@ -116,9 +136,10 @@ everyone is wrong. If every panel condemns it, the same in reverse.
 probability, impact, and a mitigation, or an explicit statement that no mitigation
 exists.
 
-**Attacks resting on unverified or quarantined claims are marked as such and
-cannot on their own produce a no-go.** Without this rule, Pass 1's honesty
-becomes ammunition for killing a sound idea.
+**Attacks resting on unverified, quarantined, or `generated` claims are marked as
+such and cannot on their own produce a no-go.** Without this rule, Pass 1's
+honesty becomes ammunition for killing a sound idea, and an agent's own invented
+sentence gets to end the project.
 
 **Stress tests.** Re-evaluate the concept under adverse conditions: acquisition
 cost doubles, retention lands well below expectation, the distribution channel
@@ -144,6 +165,19 @@ against criteria fixed before the evidence arrived:
 unfinished one, and the prompt says so because the instinct at this point is to
 keep attacking until something sticks.
 
+**A go cannot rest on claims nobody acted on.** This is the one cap on the rule
+above, and it is about what the research established rather than how the attack
+went. Read the decision-flipping rows by provenance. If all of them sit at
+`generated` or `stated`, the strongest thing established is that the idea sounds
+reasonable, which is not the same as anybody wanting it. The verdict drops one
+level, a go becoming a cautious-go, and names the rung that is missing and what
+would reach it.
+
+This is not a fourth verdict and it does not override the kill criteria. A no-go
+stays a no-go. It exists because the failure it catches is invisible: research
+built entirely on stated intention and agent output reads exactly like research
+built on observed behaviour, and by Phase 3 nobody is looking any more.
+
 **If the maintainer wants to override a no-go**, do not simply accept it. Name
 which kill criterion is being set aside and what the evidence for it is, and make
 the case once, properly. Then offer alternatives rather than only resistance:
@@ -158,9 +192,11 @@ given. An override taken silently makes the Phase 0 kill criteria decorative.
 **`docs/research/02-validation.md`**
 
 - Executive summary
-- Verification results: counts of verified, corrected, and quarantined, and what
-  the corrections changed
-- Quarantined claims, stamped, in their own section
+- Verification results: counts of verified, corrected, quarantined, and
+  `generated`, and what the corrections changed
+- The decision-flipping rows counted by provenance, and where the strongest of
+  them sits on the ladder
+- Quarantined and `generated` claims, each stamped, in their own section
 - One section per panel, isolated reports as written
 - The devil's advocate position
 - The debate: where panels disagreed and what would settle it
@@ -182,7 +218,9 @@ document, and any override with its reason.
 
 The ledger is fully resolved, every panel has reported, the debate has happened,
 and the verdict is written against the Phase 0 kill criteria rather than against
-the weight of the criticism.
+the weight of the criticism. Where the verdict was capped because no
+decision-flipping claim reached `described`, that is stated in the verdict itself
+and not only in the counts.
 
 The maintainer is being asked to approve **the verdict, and on a cautious-go, the
 conditions attached to it**. On a no-go this is where the pipeline stops, and

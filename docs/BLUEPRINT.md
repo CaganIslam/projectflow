@@ -80,9 +80,9 @@ repeated here.
   `docs/prompts/README.md`.
 - ~~Whether the pipeline warrants an ADR~~ - decided in #7, see ADR 0004:
   agent-triggered, depth-switched at Phase 1, prompts stay in this repo.
-- ~~Claim ledger format~~ - fixed by #8, since it was written first:
-  `docs/research/01-claims.md`, columns id / claim / tier / label / source /
-  where. Recorded in the prompt contract; #10 reads that shape.
+- ~~Claim ledger format~~ - fixed by #8, since it was written first, and extended
+  by #37 with a provenance column. The schema is owned by the prompt contract,
+  `docs/prompts/README.md`; #10 reads that shape rather than a copy of it.
 - ~~Where the PRD artifact lives~~ - decided in #11: `docs/PRD.md`, with a summary
   and a link in `BLUEPRINT.md` so the plan of record stays readable.
 
