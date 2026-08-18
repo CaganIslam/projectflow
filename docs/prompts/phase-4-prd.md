@@ -180,8 +180,27 @@ Before finishing, read the whole document and report:
 - contradictions between sections;
 - requirements with no acceptance criteria;
 - requirements with no traceability and no assumption label;
+- **features that cannot say what they let someone do** (below);
 - screens or features referenced somewhere but never specified;
 - anything still ambiguous.
+
+**What can someone do with this that they could not do without it?** One
+sentence per feature that fails to be obvious, and an answer that only describes
+what appears on the screen is not an answer. "Shows the current status of every
+order" describes a surface. "Lets someone catch a stuck order before the customer
+calls" is a thing somebody could not do before.
+
+The charter's admission test asks what a section forbids; this is the same
+question pointed at the PRD, and it catches something traceability does not. A
+feature traced to a real finding can still change nothing: it displays state, and
+nobody behaves differently for having seen it.
+
+Two things this must not become. It is not a per-requirement field, because a
+required field teaches whoever fills it what shape of sentence passes and
+produces one every time. And it is not a delete list: some features exist because
+a platform, a store, or a regulation requires them, and those are recorded as
+**externally required**, with what requires them, rather than being justified
+with an invented benefit.
 
 Remaining ambiguity is **listed**, not silently resolved.
 
@@ -189,7 +208,8 @@ Remaining ambiguity is **listed**, not silently resolved.
 
 Every screen and every feature enumerated with states and acceptance criteria,
 every requirement traced or labelled an assumption, charter conflicts raised
-rather than resolved, version scope drawn, and the self-check reported.
+rather than resolved, version scope drawn, and the self-check reported, including
+any feature that could not say what it lets someone do.
 
 The maintainer is being asked to approve **what will be built and what will not**.
 Phase 6 turns this into issues, so a gap here becomes work that never happens.
@@ -219,6 +239,14 @@ snaps to a valid connection point, and an invalid placement is refused with an
 explanation rather than silently ignored. Out of scope: the snap radius in
 pixels, the tween duration, and whether snapping is computed on drag or on
 release. Those are constraints and issue-level decisions respectively.
+
+**A feature that cannot say what it lets someone do, in this domain.** A stats
+panel listing total beams placed, material spent, and structures completed. It
+traces to a real finding, players do read it, and nothing follows from it: the
+next build is identical whether it was opened or not. The version that passes is
+one that changes a decision, such as showing that the last three failures were
+all the same joint type, which sends the player back to a different design rather
+than the same one.
 
 **A charter conflict worth raising rather than resolving.** If the charter says
 the structure is authored entirely by the player, a requirement for an

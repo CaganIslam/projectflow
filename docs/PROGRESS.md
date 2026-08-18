@@ -11,6 +11,19 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-18 - Features have to say what they let someone do
+
+- Issue: #40 · Milestone: Milestone 4: Evidence discipline
+- What changed: one line in Phase 4's closing self-check. Every feature answers
+  what someone can do with it that they could not do without it, in one sentence,
+  and an answer that only describes what appears on the screen does not count.
+  Features a platform or a regulation requires are recorded as externally required
+  rather than given an invented benefit.
+- Notes for next time: deliberately not a per-requirement field. A required field
+  teaches whoever fills it which shape of sentence passes, and then every feature
+  has one. It overlaps traceability on purpose; what it adds is the feature that
+  traces to something real and still changes nothing.
+
 ## 2026-08-18 - The riskiest assumption gets named before the charter
 
 - Issue: #39 · Milestone: Milestone 4: Evidence discipline
