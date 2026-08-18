@@ -67,9 +67,9 @@ Eleven stages carrying an idea from framing to a backlog and then through
 building it. The first seven have prompts in `docs/prompts/`; the last four are
 the issue loop `SKILL.md` already describes.
 
-The stage list, the gates, and the four contracts that run between non-adjacent
-phases are in **`docs/DISCOVERY-PIPELINE.md`**, which owns them. They are not
-repeated here.
+The stage list, the gates, and the contracts that run between non-adjacent phases
+are in **`docs/DISCOVERY-PIPELINE.md`**, which owns them. They are not repeated
+here, and neither is their count.
 
 ## Open decisions
 

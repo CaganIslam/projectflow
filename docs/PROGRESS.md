@@ -11,6 +11,22 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-18 - The riskiest assumption gets named before the charter
+
+- Issue: #39 · Milestone: Milestone 4: Evidence discipline
+- What changed: Phase 2 now closes with an assumption inventory sorted into wanted,
+  worth it, buildable, and adoptable, ranked by consequence, with a test card for
+  the top item whose threshold is written before the test runs. Phase 3 will not
+  start until that item is tested or recorded as accepted untested, and a failed
+  test goes back to Phase 2. Fifth cross-phase contract in
+  `docs/DISCOVERY-PIPELINE.md`, and a gate row between 2 and 3.
+- Notes for next time: this started as a proposal for a new phase and was cut down
+  on purpose. Two reasons, both in the issue: a test is human work over days, so a
+  numbered phase would stall the pipeline in a way no other phase does, and
+  inserting one renumbers 3 through 6 across the whole repo for a stage most
+  projects skip. Also worth remembering that skipping Phase 3 does not skip the
+  gate; the state goes in `BLUEPRINT.md` instead.
+
 ## 2026-08-18 - Claims record where they came from
 
 - Issue: #37 · Milestone: Milestone 4: Evidence discipline
