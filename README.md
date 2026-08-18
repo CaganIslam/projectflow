@@ -1,20 +1,23 @@
 # projectflow
 
-> An issue-driven GitHub workflow.
+> A discovery pipeline and an issue-driven GitHub workflow.
 
-A disciplined, issue-driven way to build software on GitHub — packaged as an
-[Agent Skill](https://agentskills.io) so a coding agent (Claude Code, etc.) can run
-it with a human in the loop.
+A disciplined way to take an idea from "should we build this at all" to shipped work,
+packaged as an [Agent Skill](https://agentskills.io) so a coding agent (Claude Code,
+etc.) can run it with a human in the loop.
 
-The idea in one line: **requirements become issues, issues are worked one at a time
-behind an approval gate, every change is verified by automated tests plus guided manual
-checks where human judgment is needed, and the project keeps living docs so context is
-never lost.**
+Two halves. **In front:** a seven-phase discovery pipeline that researches the idea,
+red-teams it, and produces a **go / cautious-go / no-go** before anything is built.
+**Behind it:** requirements become issues, issues are worked one at a time behind an
+approval gate, every change is verified with evidence, and living docs keep the
+context.
+
+A no-go at phase 2 is a good outcome. It costs days instead of months.
 
 > **Recommended companion:** projectflow runs great on its own, but it's designed to
 > hand off the *how* of each step to the [superpowers](https://github.com/obra/superpowers)
 > skills (TDD, planning, debugging, code review, …). Install those too for the full
-> experience — see [Install](#install). Without them, projectflow falls back to its own
+> experience - see [Install](#install). Without them, projectflow falls back to its own
 > built-in guidance, so nothing breaks.
 
 ## The discovery pipeline
@@ -67,38 +70,43 @@ when it is skipping. A no-go at Phase 2 is a good outcome: it costs days, not mo
 
 ## What you get
 
-- **Discovery-first for new ideas** — a Phase 0 that validates worth-doing,
-  competitors, and white space with real research and a **go / cautious-go / no-go**
-  before anything is built, then hands the validated idea to `writing-plans`.
-- **3-axis labels** — `area:` (your layers) × `priority:` (high/medium/low,
+- **A discovery pipeline for new ideas** - seven phases, each behind its own approval
+  gate, from framing through research and a red-team verdict to a backlog. See above.
+- **Gates that actually fire** - the two rules most often skipped (propose before you
+  work, evidence before you claim "done") are always-on with observable triggers: no
+  edit before an approved proposal, no "done" without the output in the same message.
+- **3-axis labels** - `area:` (your layers) × `priority:` (high/medium/low,
   milestone-relative) × type (`feat`/`bug`/`enhancement`/`documentation`/`testing`).
-- **Structured issues** — issue forms that force an engineering-spec body
+- **Structured issues** - issue forms that force an engineering-spec body
   (Problem / Wanted / Options / Files / Definition of Done) and apply the right labels.
-- **Decisions at the last responsible moment** — issues carry options with trade-offs
+- **Decisions at the last responsible moment** - issues carry options with trade-offs
   instead of premature picks; the implementer decides at propose time with the code in
   front of them, and cross-cutting calls go to the blueprint or an ADR upfront.
-- **Milestones as gates** — numbered iterations + named release gates that double as
-  a dashboard (version, tag, deliverables, deadlines).
-- **A bug-hunt loop** — keep finding bugs until a dry pass; each becomes a tracked
+- **Milestones as gates** - numbered iterations + named release gates that double as
+  a dashboard (version, tag, deliverables). Ordered by dependency; no calendar
+  estimates anywhere.
+- **An agent never checks its own work** - whatever catches errors in a previous step
+  (review, verification, QA, bug hunt) is done by a fresh agent that didn't produce it.
+- **A bug-hunt loop** - keep finding bugs until a dry pass; each becomes a tracked
   `bug` issue, split across milestones by priority. Offered at every milestone close.
-- **Living project docs** — `BLUEPRINT.md` (the plan), `ARCHITECTURE.md` (constraints
+- **Living project docs** - `BLUEPRINT.md` (the plan), `ARCHITECTURE.md` (constraints
   & structure), `PROGRESS.md` (a continuously-updated memory of what's been done), and
   `STACK.md` (the tech stack + external providers + env keys + per-provider
   data-residency map).
-- **Enforced merge rules** — a `main` ruleset (approval + green checks + no
+- **Enforced merge rules** - a `main` ruleset (approval + green checks + no
   force-push) and conventional-commit / PR-title linting.
-- **One-shot setup** — a bootstrap script that provisions all of the above in a fresh
+- **One-shot setup** - a bootstrap script that provisions all of the above in a fresh
   repo.
 
 ## Pairs with deep skills (optional)
 
 projectflow handles **what to do and when**. For the **how** of each step it hands off
-to deeper single-purpose skills when they're installed — e.g. the
+to deeper single-purpose skills when they're installed - e.g. the
 [superpowers](https://github.com/obra/superpowers) set: `brainstorming` to scope work,
 `writing-plans`, `test-driven-development`, `systematic-debugging`,
 `verification-before-completion`, `requesting-code-review`, and more. Each loop step in
 `SKILL.md` is marked with its matching `↳ deep skill`. If those skills aren't
-installed, projectflow's own inline guidance takes over — nothing here depends on them.
+installed, projectflow's own inline guidance takes over - nothing here depends on them.
 
 ## Install
 
@@ -110,11 +118,11 @@ git clone https://github.com/CaganIslam/projectflow \
   ~/.claude/skills/projectflow
 ```
 
-Then invoke it (`/projectflow`) or let it trigger on phrases like
-"let's plan this feature", "break this into issues", "run a bug hunt", "set up the
-repo".
+Then invoke it (`/projectflow`) or let it trigger on phrases like "I've got an idea
+for…" (starts the pipeline), "let's plan this feature", "break this into issues",
+"run a bug hunt", "set up the repo".
 
-**Recommended — also install superpowers** (the deep skills each step hands off to):
+**Recommended - also install superpowers** (the deep skills each step hands off to):
 
 ```bash
 # Claude Code plugin (auto-updates, adds the session hook)
@@ -125,7 +133,7 @@ git clone https://github.com/obra/superpowers /tmp/superpowers
 cp -R /tmp/superpowers/skills/* ~/.claude/skills/
 ```
 
-projectflow detects them automatically — if they're absent it uses its own inline
+projectflow detects them automatically - if they're absent it uses its own inline
 guidance instead, so this step is optional but recommended.
 
 ## Use it on a project
@@ -136,13 +144,13 @@ scripts/bootstrap-repo.sh <owner>/<repo>
 
 This creates the label set, the milestones, the issue/PR templates, the `main`
 ruleset, a Projects board, and seeds the four living docs + `CLAUDE.md`. It's
-idempotent — safe to re-run to reconcile an existing repo.
+idempotent - safe to re-run to reconcile an existing repo.
 
 ## Configure
 
 Set these once per project (the bootstrap asks; `CLAUDE.md` records them):
 
-- **areas** — your layer vocabulary (`frontend, backend, mobile, devops`, or
+- **areas** - your layer vocabulary (`frontend, backend, mobile, devops`, or
   `api, web, infra`, …). Drives labels, title prefixes, and branch/commit scopes.
 - **milestone scheme**, **test commands**, and the **traceability** system issues
   map back to.
@@ -152,11 +160,13 @@ Set these once per project (the bootstrap asks; `CLAUDE.md` records them):
 ```
 SKILL.md                    the method (read this first)
 CLAUDE.md                   drop-in project memory
+docs/DISCOVERY-PIPELINE.md  the eleven stages, the gates, the cross-phase contracts
+docs/prompts/               one agent prompt per phase (0-6) + their shared contract
+docs/adr/                   this repo's own decision records
 commitlint.config.js        commit/PR-title grammar (set your areas)
 scripts/bootstrap-repo.sh   one-shot repo setup
 templates/.github/          issue forms, PR template, branch ruleset
 templates/docs/             living-doc + ADR seeds
-docs/adr/                   this repo's own decision records
 ```
 
 ## License
