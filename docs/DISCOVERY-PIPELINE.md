@@ -54,6 +54,7 @@ What is being approved differs at each gate, and the prompts name it:
 | 0 | that this is the problem, framed correctly |
 | 1 | that the research is complete enough to be attacked |
 | 2 | the verdict, and on a cautious-go, its conditions |
+| 2 to 3 | the top assumption: its test result, or that it is accepted untested |
 | 3 | what must remain true about the product |
 | 4 | what will be built and what will not |
 | 5 | the shape of the system, and what was left open |
@@ -62,9 +63,15 @@ What is being approved differs at each gate, and the prompts name it:
 Phase 2 is the one that can end the pipeline. A no-go there is a good outcome: it
 costs days rather than months.
 
+The gate between 2 and 3 is the only one that is not the end of a phase. It is
+there because everything up to that point is done at a distance, and it is the
+last cheap moment to find out whether the thing anyone actually needed was true.
+Both of its answers are valid, including accepting the assumption untested; what
+it refuses is passing through without the question being asked.
+
 ## The contracts between phases
 
-Four contracts run between non-adjacent phases. None is visible from the order
+Five contracts run between non-adjacent phases. None is visible from the order
 above, and breaking one degrades the pipeline quietly rather than loudly, which
 is why they are written down.
 
@@ -84,6 +91,13 @@ something. Phase 2 reads that to tell an invented sentence apart from a genuinel
 unverifiable one, and to cap a verdict resting on nothing anyone acted on. The
 column is set once, at writing, because provenance cannot be recovered from a
 finished page.
+
+**Phase 2's assumption inventory opens Phase 3.** The verdict says whether to
+proceed; the inventory says what the decision is standing on, sorted into wanted,
+worth it, buildable, and adoptable. Phase 3 does not start until the top item is
+tested or recorded as accepted untested, and a failed test goes back to Phase 2
+rather than forward. Without this the pipeline validates ideas only by argument,
+and an assumption nobody has evidence about survives every panel intact.
 
 **Phase 3's charter is referenced by Phase 4, never restated.** Vision, pillars,
 and permanent non-goals live in the charter. The PRD owns requirements, scope,

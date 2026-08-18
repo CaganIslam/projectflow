@@ -187,6 +187,50 @@ committing. If the maintainer still wants to proceed, that is their call and it
 proceeds, recorded in `BLUEPRINT.md` with the criterion overridden and the reason
 given. An override taken silently makes the Phase 0 kill criteria decorative.
 
+### Handing off - the assumption inventory
+
+The verdict says whether to proceed. It does not say what the decision is
+standing on, and that is what Phase 3 needs before it starts.
+
+So Pass 3 closes by listing the assumptions the verdict rests on, sorted into
+four kinds:
+
+| Kind | The question | If it is wrong |
+|---|---|---|
+| Wanted | does anyone want this | nobody uses it |
+| Worth it | is it worth what it costs them | they use it and will not pay, in money or in effort |
+| Buildable | can it be built by these people under these constraints | what was promised does not arrive |
+| Adoptable | does it survive contact with what they already do | it is liked, and never opened again |
+
+**Name the fourth one even when it feels obvious.** It is the least visible of
+the four, because it is the only one that cannot be reasoned about from a
+distance, and it kills more finished products than the other three together.
+
+Then rank by consequence: what breaks if this is wrong, not how interesting it
+is. The top one or two get a card:
+
+```
+Assumption:      one sentence, stated so it can be false
+What breaks:     what stops being true downstream if it is
+Cheapest test:   the smallest artifact that would settle it
+What to watch:   one number or one observation
+Threshold:       written now, before the test runs
+Result:          left empty
+```
+
+**The threshold is written before the test.** Written afterwards it is a
+description of whatever happened, and any outcome reads as encouraging. This is
+the Phase 0 kill-criteria rule applied one level down, and it is here for the
+same reason.
+
+The test itself is not run here, and usually not by an agent. It is a playable
+slice, a page put in front of an audience, a hand-run version of the service, a
+spike against a real interface, or one person watched using a prototype. Which
+one depends on the assumption, and the prompt does not guess.
+
+On a no-go the pipeline stops and the inventory is not needed. On a go or a
+cautious-go it is part of the handoff, and Phase 3 will not start without it.
+
 ## Deliverable
 
 **`docs/research/02-validation.md`**
@@ -208,6 +252,9 @@ given. An override taken silently makes the Phase 0 kill criteria decorative.
 - Pivot directions, named and not designed
 - Kill criteria, each marked met or not met
 - Verdict, its reasoning, and an overall confidence score
+- The assumption inventory, sorted into the four kinds and ranked by consequence
+- A card for the top one or two, with the threshold filled in and the result
+  empty
 
 **`docs/research/01-claims.md`** is updated in place with each row's outcome.
 
@@ -221,6 +268,8 @@ and the verdict is written against the Phase 0 kill criteria rather than against
 the weight of the criticism. Where the verdict was capped because no
 decision-flipping claim reached `described`, that is stated in the verdict itself
 and not only in the counts.
+
+The assumption inventory exists, ranked, with a card for the top item.
 
 The maintainer is being asked to approve **the verdict, and on a cautious-go, the
 conditions attached to it**. On a no-go this is where the pipeline stops, and
@@ -249,6 +298,18 @@ Marked as such, it can inform the discussion and cannot produce a no-go alone.
 **A stress test specific here**: the game is never featured on a store front page,
 and no creator makes a video about it. If the plan only works with either, that is
 a necessary condition rather than a hope, and it belongs in the charter.
+
+**The top assumption in this domain**, and it is usually the adoptable one rather
+than the wanted one. People want physics construction games; the open question is
+whether the specific loop holds attention past the first session. A card for it:
+the assumption is that players who finish the tutorial start a second session
+within a day; what breaks is the entire retention argument the verdict rests on;
+the cheapest test is a rough playable build put in front of a handful of people
+who were not told what to look for; what to watch is how many open it again
+unprompted; the threshold is written before anyone plays.
+
+Note what the card does not do: it does not ask whether people liked it. Liking
+it is what the first session already established.
 
 **Where the phase gets crossed in this domain**: "players in this genre abandon
 games when failure feels arbitrary" is a finding, ranked and evidenced. "Add an

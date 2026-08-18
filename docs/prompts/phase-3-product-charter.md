@@ -24,6 +24,9 @@ the job is the same in each.
 - `docs/research/00-problem.md` - who this is for, and what they are trying to do.
 - `BLUEPRINT.md` - the verdict. On a cautious-go, its conditions belong here as
   constraints.
+- The **assumption inventory** at the end of `docs/research/02-validation.md`,
+  and specifically the state of its top item. The gate below will not open
+  without it.
 
 Where the research contradicts the original idea, the research wins, and the
 charter says so at the point where it happens rather than quietly siding with the
@@ -42,6 +45,30 @@ idea.
 - Code.
 
 ## Method
+
+### The entry gate
+
+Before anything is written here, the top item on Phase 2's assumption inventory
+has to be in one of two states, and recorded in that state:
+
+- **tested**, with the result, read against the threshold that was written before
+  the test ran; or
+- **accepted untested**, with who accepted it and what they are accepting.
+
+Accepting untested is a legitimate answer and often the right one. Most small
+work carries no assumption worth an experiment, and saying so costs a line. What
+is not legitimate is arriving here with the question unasked, because from this
+point on the charter, the PRD, and the technical design all inherit the
+assumption without ever naming it.
+
+**A failed test reopens the verdict.** It goes back to Phase 2 rather than being
+noted here and walked past. A test whose whole purpose was to be able to change
+the decision cannot be allowed to fail quietly.
+
+**If this phase is skipped**, the gate is not skipped with it. Record the state
+of the top assumption in `BLUEPRINT.md` and carry on. The gate is about the
+project, not about the charter, and a project small enough to need no charter
+still has something it is assuming.
 
 ### The admission test
 
@@ -106,7 +133,8 @@ Some projects have no identity worth protecting: internal tooling, a library, a
 one-off script. Running this phase there produces ceremony.
 
 If it is being skipped, **say so and say why**, in `BLUEPRINT.md`. A skipped
-phase and a forgotten phase must not look the same.
+phase and a forgotten phase must not look the same. The entry gate above still
+applies; see the note there.
 
 ## Deliverable
 
@@ -161,7 +189,8 @@ both are worse than not having one.
 
 ## Exit condition
 
-Three to five pillars, each with a violation clause and a stated basis. Every
+The entry gate is closed: the top assumption is tested or recorded as accepted
+untested. Three to five pillars, each with a violation clause and a stated basis. Every
 quality goal names its trade-offs. Anti-goals derived from the pillars rather than
 listed first. An amendment procedure. The pillars fit on one screen.
 
