@@ -44,6 +44,11 @@ Verification is also not this phase. Claims are labelled and sourced here, and
 checked in Phase 2. Do not describe the report as verified, and do not spend the
 budget re-checking your own work; an independent pass does that better.
 
+**Neither is this a substitute for contact with the people involved.** Everything
+here is read at a distance, and no amount of it establishes that anyone would
+change what they do. That is the gap the provenance column exists to keep
+visible, and it is not closed by researching harder.
+
 ## Method
 
 ### Step 1 - ask the maintainer for depth
@@ -94,6 +99,18 @@ research terms; the maintainer confirms because they know the stakes.
   each sub-lane go deep on its slice.
 - **Compare independent sources.** Where a figure matters, find it twice. Where
   it appears only once, that is itself worth recording.
+- **No lane invents the people it is researching.** Asked what users say, a model
+  will produce plausible personas with quotes, group them into themes, and return
+  percentages, and the result is indistinguishable from research by shape. That
+  output is allowed as a working tool - for pulling themes to go looking for, for
+  drafting questions, for noticing which roles nobody has covered - and it enters
+  the ledger only as `generated`. It is never presented as what people said.
+- **Ungrounded simulation is refused, not produced.** A model given no real
+  detail returns the framing's own assumptions in someone else's voice, which is
+  worse than silence because it reads as confirmation. If the user voice lane has
+  nothing real to work from - no reviews, no forum threads, no support archive,
+  no transcript - it reports that it found nothing and says what would be needed.
+  Where it does simulate, the grounding it used is recorded alongside the output.
 
 ### Step 4 - label every claim
 
@@ -107,7 +124,25 @@ Each statement carries what kind of statement it is, and its source:
 This is sourcing discipline, not verification. An agent that invents a figure
 labels it honestly and still believes it. Phase 2 is what catches that.
 
-### Step 5 - assign a tier to every claim
+### Step 5 - record where every claim came from
+
+The `provenance` column, from the ladder in `docs/prompts/README.md`: `generated`,
+`sourced`, `stated`, `described`, `revealed`, or `committed`.
+
+Assigned by the writer, at the moment of writing, for the same reason the tier is.
+Provenance is not recoverable later: once a sentence is on the page, the agent
+that reads it cannot tell whether anyone was ever observed doing the thing.
+
+Two rules bind here rather than in Phase 2, because this is where the loss
+happens:
+
+- A claim marked `generated` cannot also be labelled `fact` or `evidence`. If
+  those two columns disagree, the provenance is right and the label is wrong.
+- The four ordered values are chosen only when the claim really is about what
+  someone would do. Choosing one is what marks it as a demand claim, and Phase 2
+  reads that when deciding what the verdict may rest on.
+
+### Step 6 - assign a tier to every claim
 
 Assigned by whoever writes the claim, not inferred later by Phase 2:
 
@@ -123,7 +158,7 @@ There is a second reason for doing this at write time: an agent forced to ask
 "would the decision change if this were false" before writing a number produces
 fewer casual numbers.
 
-### Step 6 - build the opportunity and white-space map
+### Step 7 - build the opportunity and white-space map
 
 Where the gaps are, and **why they are empty**. A gap nobody has filled is more
 often a gap nobody can fill profitably than an oversight, and saying which is the
@@ -154,9 +189,9 @@ Two files.
 **`docs/research/01-claims.md`** - the claim ledger. A table, one row per claim,
 which Phase 2 iterates over directly:
 
-| id | claim | tier | label | source | where |
-|---|---|---|---|---|---|
-| C001 | <the claim, stated so it can be true or false> | decision-flipping | fact | <url or citation> | <section of the report> |
+| id | claim | tier | label | provenance | source | where |
+|---|---|---|---|---|---|---|
+| C001 | <the claim, stated so it can be true or false> | decision-flipping | fact | sourced | <url or citation> | <section of the report> |
 
 The ledger is a separate file rather than a section of the report because Phase 2
 loops over it line by line, and extracting claims from prose to do that is
@@ -170,8 +205,13 @@ where they do not.
 ## Exit condition
 
 Both files exist, every lane has either run or been recorded as not run, the
-ledger covers the report, and the opportunity map describes gaps without
-proposing what fills them.
+ledger covers the report, every ledger row carries a provenance value, and the
+opportunity map describes gaps without proposing what fills them.
+
+If the ledger's decision-flipping rows are entirely `generated` and `stated`, say
+so plainly in the executive summary. It does not stop the handoff, and Phase 2
+will act on it, but it is the single most useful sentence the report can contain
+and it should not be something the next phase has to discover for itself.
 
 The maintainer is being asked to approve **that the research is complete enough
 to be attacked** - not that its conclusions are right, which is Phase 2's
@@ -209,6 +249,15 @@ the audience for construction puzzles has been over the last few years, or
 whether the strongest competitor is still actively developed. **A colour claim**
 looks like which studio originally popularised a mechanic. The first changes the
 verdict if wrong. The second does not.
+
+**Provenance in this domain.** Wishlist counts and review totals pulled from a
+store listing are `sourced`. A forum thread where players say they would buy a
+game like this is `stated`. Players describing the workaround they use because
+placement controls are imprecise is `described`. Hours logged on a rough
+equivalent, or a paid mod that exists only to fix the missing feature, is
+`revealed` - the money is incidental, what counts is that somebody already spent
+something. A persona an agent wrote to illustrate the audience is `generated`,
+and stays that way however convincing it reads.
 
 **Where the boundary gets crossed in this domain**: "players in this genre
 complain most about imprecise placement controls" is a finding. "The game should

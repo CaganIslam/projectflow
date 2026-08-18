@@ -41,6 +41,7 @@ place, and everything else references it.
 | Pipeline order, gates, and cross-phase contracts | `docs/DISCOVERY-PIPELINE.md` | `BLUEPRINT.md` and the prompts link to it, never repeat it |
 | Artifact paths per phase | `docs/prompts/README.md` | the pipeline doc points at it |
 | The shape every phase prompt shares | `docs/prompts/README.md` | each prompt fills the skeleton, does not redefine it |
+| The claim ledger schema and the provenance ladder | `docs/prompts/README.md` | phases 1 and 2 may name the values; what they mean is defined here only |
 | A single phase's instructions | its file in `docs/prompts/` | the pipeline doc summarises, does not duplicate |
 | Why a structural decision was made | `docs/adr/` | other docs link to the ADR |
 | What has been done | `docs/PROGRESS.md` | nothing else keeps history |

@@ -134,12 +134,69 @@ Where each phase writes, in the project being built (not in this repo):
 | 5 | `ARCHITECTURE.md`, `STACK.md`, `docs/adr/` |
 | 6 | GitHub issues and milestones |
 
-The claim ledger is a contract between phases 1 and 2. Phase 1 was written first
-and fixed it: `docs/research/01-claims.md`, a table with the columns id, claim,
-tier, label, source, where. Phase 2 reads that shape rather than redefining it.
-
 These prompts stay in this repo and are not copied into `templates/`. The
 reasoning, and what it costs, is in ADR 0004.
+
+## The claim ledger
+
+The ledger is a contract between phases 1 and 2. Phase 1 writes it, Phase 2
+iterates over it and updates it in place: `docs/research/01-claims.md`, a table
+with the columns id, claim, tier, label, provenance, source, where. Phase 2 reads
+that shape rather than redefining it.
+
+Four of those columns ask different questions about the same sentence, and they
+are easy to collapse into one another:
+
+- **label** - what kind of statement it is: fact, evidence, hypothesis, opinion
+- **tier** - what turns on it: decision-flipping, supporting, colour
+- **provenance** - where it came from, below
+- **source** - where to go and check
+
+### Provenance
+
+Assigned by whoever writes the claim, at the moment they write it.
+
+| Value | Meaning |
+|---|---|
+| `generated` | nobody observed this; an agent produced it |
+| `sourced` | a document, dataset, or public record states it |
+| `stated` | someone said they would do something, or that it would be useful |
+| `described` | someone described what they do today and what it costs them |
+| `revealed` | someone already spends money, time, or attention on a worse version of this |
+| `committed` | someone has committed to this one |
+
+The last four are ordered, weakest to strongest, and they are the values that
+carry a claim about demand. `sourced` sits outside that ordering: a document is a
+different kind of thing from a person's behaviour, not a stronger or weaker
+version of it.
+
+**Provenance is about what happened, not about how you found out.** The `source`
+column already records how you found out. So a dataset showing people spending
+hours on a near equivalent is `revealed`, even though you read it in a document,
+because somebody did something. A market report sizing a category is `sourced`,
+because nothing in it is a person acting on this need.
+
+**Choosing one of the four ordered values is what makes a claim a demand claim.**
+No separate step decides which claims those are, and none should be added.
+Whoever writes the sentence already knows whether it is about what someone would
+do, and a later phase re-reading several hundred sentences to work it out is
+exactly the expensive, unreliable pass the write-time tiering rule exists to
+avoid.
+
+**The threshold sits between `stated` and `described`.** Below it, a claim is
+evidence of interest rather than of demand. What people say they would do is a
+poor predictor of what they do, and every domain has its own version of the
+polite yes.
+
+The rungs are about behaviour, not about money. `revealed` reads as an existing
+subscription for a business tool, as hours already spent on a rough equivalent
+for a game, as a spreadsheet somebody maintains by hand every week for an
+internal tool, and as projects vendoring a workaround for a library.
+
+**A `generated` claim can never carry the label `fact` or `evidence`.** It is a
+hypothesis at best, whatever it sounds like. This is a property of the ledger and
+holds wherever the ledger is written. What the verdict may rest on is Phase 2's
+rule and lives in its prompt.
 
 ## Writing a new phase prompt
 

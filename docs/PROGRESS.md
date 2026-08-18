@@ -11,6 +11,22 @@
 - Notes for next time: <anything that will save future-you time>
 -->
 
+## 2026-08-18 - Claims record where they came from
+
+- Issue: #37 · Milestone: Milestone 4: Evidence discipline
+- What changed: the claim ledger gained a `provenance` column, owned by
+  `docs/prompts/README.md` along with its six values and the threshold between
+  `stated` and `described`. Phase 1 refuses ungrounded simulation, marks anything an
+  agent produced as `generated`, and cannot label it `fact` or `evidence`. Phase 2
+  now separates generated from unverifiable, keeps both stamped in the report, and
+  caps a go to a cautious-go when no decision-flipping claim reaches `described`.
+- Notes for next time: the trap is reading provenance as "how did you find out".
+  It is "what happened" - the `source` column already answers the other question,
+  which is why a dataset of hours played counts as `revealed` and a market report
+  counts as `sourced`. Also, choosing one of the four ordered values is what marks
+  a claim as a demand claim; #38 was closed because any other way of deciding that
+  needs a classification pass nothing can do reliably.
+
 ## 2026-08-14 - Agent organization for the development stage
 
 - Issue: #18 · Milestone: Milestone 3: Working loop improvements
