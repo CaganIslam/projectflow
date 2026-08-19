@@ -56,6 +56,21 @@
   a claim as a demand claim; #38 was closed because any other way of deciding that
   needs a classification pass nothing can do reliably.
 
+## 2026-08-18 - README and wiki brought up to date with the pipeline
+
+- PR: #36 · Milestone: Milestone 3: Working loop improvements
+- What changed: the README's "What you get" list still described the old
+  single-phase discovery and claimed it handed off to `writing-plans`. Replaced
+  with the actual pipeline, plus bullets for the gates that now have observable
+  triggers and for the rule that an agent never checks its own work. Layout block,
+  invoke list, and intro updated; 18 em dashes converted to plain hyphens. The
+  wiki's `Home.md` was rewritten separately, from a shorter README into a page
+  about what using the method actually feels like. Repo description updated too.
+- Notes for next time: written late, on 2026-08-19, because the entry was missed
+  when the PR merged. The wiki is a separate git repo and the bootstrap does not
+  touch it, so any change to how the pipeline works has to be carried there by
+  hand.
+
 ## 2026-08-14 - Agent organization for the development stage
 
 - Issue: #18 · Milestone: Milestone 3: Working loop improvements
